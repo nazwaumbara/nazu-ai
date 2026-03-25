@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazu AI — CV Builder Profesional Berbasis AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NAZU AI — Design System
+   Aesthetic: Refined Editorial · Luxury Career Platform
+   Palette: Deep Navy + Champagne Gold + Warm White
+   ============================================================ */
+:root {
+  --navy: #0B1426;
+  --navy-2: #162038;
+  --navy-3: #1F2D4A;
+  --navy-4: #2A3D65;
+  --gold: #C8A96E;
+  --gold-2: #E2C98A;
+  --gold-3: #F0DFB0;
+  --gold-dim: #8B7040;
+  --cream: #FAF8F3;
+  --cream-2: #F3EFE5;
+  --cream-3: #E8E1D0;
+  --white: #FFFFFF;
+  --text-dark: #0F1923;
+  --text-mid: #4A5568;
+  --text-light: #8A96A8;
+  --success: #2D7D4F;
+  --success-bg: #EBF7F0;
+  --warning: #B45309;
+  --warning-bg: #FEF3C7;
+  --danger: #B91C1C;
+  --danger-bg: #FEE2E2;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --shadow-sm: 0 2px 8px rgba(11,20,38,0.08);
+  --shadow-md: 0 8px 24px rgba(11,20,38,0.12);
+  --shadow-lg: 0 20px 60px rgba(11,20,38,0.18);
+  --transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============ TYPOGRAPHY ============ */
+.serif { font-family: 'Cormorant Garamond', serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.2; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(11,20,38,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo {
+  width: 38px; height: 38px;
+  background: var(--gold);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--navy);
+}
+.nav-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.3px;
+}
+.nav-name em { color: var(--gold); font-style: normal; }
+.nav-links {
+  display: flex; align-items: center; gap: 0.25rem;
+  margin-left: auto;
+}
+.nav-link {
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--r-sm);
+  transition: var(--transition);
+}
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--gold-2); }
+.nav-cta {
+  font-size: 13px; font-weight: 500;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 8px 20px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: var(--transition);
+  margin-left: 0.5rem;
+}
+.nav-cta:hover { background: var(--gold-2); transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 2rem 4rem;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,169,110,0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 10% 80%, rgba(200,169,110,0.05) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 500;
+  color: var(--gold-2);
+  background: rgba(200,169,110,0.12);
+  border: 1px solid rgba(200,169,110,0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-title {
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+.hero-subtitle {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 500;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 32px;
+  border-radius: var(--r-sm);
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold-2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,169,110,0.3); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 500;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 14px 32px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 700;
+  color: var(--gold);
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+/* ============ BUILDER SECTION ============ */
+.section {
+  padding: 5rem 2rem;
+}
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 560px;
+  font-weight: 300;
+}
+
+/* ============ BUILDER APP ============ */
+.builder-wrap {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 300px 1fr 380px;
+  min-height: 760px;
+  border: 1px solid var(--cream-3);
+}
+
+/* LEFT PANEL */
+.builder-left {
+  background: var(--navy);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.builder-nav-title {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(200,169,110,0.5);
+  margin-bottom: 0.75rem;
+}
+.step-nav { display: flex; flex-direction: column; gap: 4px; }
+.step-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  position: relative;
+}
+.step-item:hover { background: rgba(255,255,255,0.04); }
+.step-item.active {
+  background: rgba(200,169,110,0.1);
+  border-color: rgba(200,169,110,0.2);
+}
+.step-item.done .step-num { background: var(--success); color: var(--white); }
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.4);
+  font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.step-item.active .step-num {
+  background: var(--gold);
+  color: var(--navy);
+}
+.step-label {
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  transition: var(--transition);
+}
+.step-item.active .step-label { color: var(--gold-2); font-weight: 500; }
+.step-item.done .step-label { color: rgba(255,255,255,0.6); }
+
+/* AI Input Panel */
+.ai-input-card {
+  background: rgba(200,169,110,0.08);
+  border: 1px solid rgba(200,169,110,0.15);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+}
+.ai-input-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 6px;
+}
+.ai-input-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.ai-textarea {
+  width: 100%;
+  background: rgba(11,20,38,0.4);
+  border: 1px solid rgba(200,169,110,0.15);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  resize: none;
+  min-height: 90px;
+  outline: none;
+  line-height: 1.6;
+  transition: var(--transition);
+}
+.ai-textarea:focus { border-color: rgba(200,169,110,0.4); }
+.ai-textarea::placeholder { color: rgba(255,255,255,0.25); }
+.ai-send-btn {
+  width: 100%;
+  margin-top: 8px;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: var(--transition);
+}
+.ai-send-btn:hover { background: var(--gold-2); }
+.ai-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ATS Score Widget */
+.ats-widget {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+}
+.ats-widget-title {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}
+.ats-gauge {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.ats-score-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.ats-score-label { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+.ats-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.ats-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.ats-verdict { font-size: 12px; color: rgba(255,255,255,0.4); }
+.ats-verdict strong { color: var(--gold-2); }
+.ats-breakdown { display: flex; flex-direction: column; gap: 8px; margin-top: 0.75rem; }
+.ats-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.ats-row-label { font-size: 11px; color: rgba(255,255,255,0.4); flex: 1; }
+.ats-row-bar { flex: 2; height: 3px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+.ats-row-fill { height: 100%; background: var(--gold); border-radius: 100px; }
+.ats-row-val { font-size: 11px; color: rgba(255,255,255,0.4); width: 28px; text-align: right; }
+
+/* ============ MIDDLE PANEL — FORM ============ */
+.builder-mid {
+  padding: 2rem;
+  overflow-y: auto;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.builder-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1.75rem;
+  background: var(--cream-2);
+  padding: 4px;
+  border-radius: var(--r-md);
+  flex-wrap: wrap;
+}
+.builder-tab {
+  flex: 1;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: var(--text-light);
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-align: center;
+}
+.builder-tab:hover { color: var(--text-dark); }
+.builder-tab.active {
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeUp 0.25s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Form Elements */
+.form-group { margin-bottom: 1.25rem; }
+.form-label {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.form-label span { color: var(--danger); margin-left: 2px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 400;
+  color: var(--text-dark);
+  background: var(--white);
+  border: 1.5px solid var(--cream-3);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  outline: none;
+  transition: var(--transition);
+  line-height: 1.5;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,169,110,0.1);
+}
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.form-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+/* Cards for repeated entries */
+.entry-card {
+  background: var(--white);
+  border: 1.5px solid var(--cream-3);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: var(--transition);
+}
+.entry-card:hover { border-color: var(--cream-3); box-shadow: var(--shadow-sm); }
+.entry-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.entry-card-title { font-size: 14px; font-weight: 600; color: var(--navy); }
+.entry-card-sub { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.entry-remove {
+  width: 28px; height: 28px;
+  border: 1px solid var(--cream-3);
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-light);
+  font-size: 16px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.entry-remove:hover { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+
+.bullet-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.bullet-row {
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.bullet-dot { color: var(--gold-dim); font-size: 16px; margin-top: 10px; flex-shrink: 0; }
+.bullet-input {
+  flex: 1;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  background: var(--cream);
+  border: 1px solid var(--cream-3);
+  border-radius: 6px;
+  padding: 8px 10px;
+  outline: none;
+  transition: var(--transition);
+  line-height: 1.5;
+  resize: none;
+}
+.bullet-input:focus { border-color: var(--gold); background: var(--white); }
+.bullet-remove {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--cream-3);
+  font-size: 16px;
+  padding: 6px;
+  margin-top: 4px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.bullet-remove:hover { color: var(--danger); }
+
+.ai-expand-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 500;
+  color: var(--gold-dim);
+  background: rgba(200,169,110,0.08);
+  border: 1px dashed rgba(200,169,110,0.3);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: var(--transition);
+  margin-top: 4px;
+}
+.ai-expand-btn:hover { background: rgba(200,169,110,0.15); border-color: var(--gold); color: var(--gold-dim); }
+.ai-expand-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.add-entry-btn {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--navy-4);
+  background: transparent;
+  border: 2px dashed var(--cream-3);
+  border-radius: var(--r-md);
+  padding: 12px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: var(--transition);
+}
+.add-entry-btn:hover { border-color: var(--gold); color: var(--gold-dim); background: rgba(200,169,110,0.04); }
+
+/* Skills */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+.skill-tag {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 400;
+  background: var(--white);
+  border: 1.5px solid var(--cream-3);
+  border-radius: 100px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.skill-tag:hover { border-color: var(--gold); }
+.skill-tag.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold-2);
+}
+.skill-remove {
+  font-size: 14px;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+.skill-remove:hover { opacity: 1; }
+
+.skill-add-row {
+  display: flex; gap: 8px;
+}
+
+/* JD Analyzer */
+.jd-panel {
+  background: var(--white);
+  border: 1.5px solid var(--cream-3);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.jd-textarea {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  border: 1.5px solid var(--cream-3);
+  border-radius: var(--r-sm);
+  padding: 12px;
+  outline: none;
+  resize: vertical;
+  min-height: 150px;
+  transition: var(--transition);
+  line-height: 1.6;
+}
+.jd-textarea:focus { border-color: var(--gold); }
+.analyze-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--navy);
+  color: var(--gold-2);
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.analyze-btn:hover { background: var(--navy-2); }
+.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.kw-section { margin-top: 1rem; }
+.kw-group-title { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 6px; }
+.kw-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.kw-tag {
+  font-size: 11px; font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  display: flex; align-items: center; gap: 4px;
+}
+.kw-tag.found { background: var(--success-bg); color: var(--success); border: 1px solid rgba(45,125,79,0.2); }
+.kw-tag.missing { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(185,28,28,0.2); }
+.kw-tag.neutral { background: var(--cream-2); color: var(--text-mid); border: 1px solid var(--cream-3); }
+
+/* ============ RIGHT PANEL — CV PREVIEW ============ */
+.builder-right {
+  border-left: 1px solid var(--cream-3);
+  background: var(--cream-2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.preview-topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--cream-3);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.preview-topbar-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+.preview-actions { display: flex; gap: 6px; }
+.preview-btn-sm {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1.5px solid var(--cream-3);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.preview-btn-sm:hover { border-color: var(--navy); color: var(--navy); }
+.preview-btn-sm.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+}
+.preview-btn-sm.gold:hover { background: var(--gold-2); }
+
+.cv-preview-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+.cv-paper {
+  background: var(--white);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+  padding: 2rem 1.75rem;
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--text-dark);
+  min-height: 400px;
+}
+.cv-paper-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.cv-paper-pos {
+  font-size: 11px; font-weight: 500;
+  color: var(--gold-dim);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.cv-paper-contacts {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  font-size: 10px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+.cv-section { margin-bottom: 14px; }
+.cv-section-hd {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--cream-3);
+}
+.cv-job-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cv-job-title-text { font-size: 11px; font-weight: 600; color: var(--navy); }
+.cv-job-period { font-size: 9px; color: var(--text-light); }
+.cv-job-co { font-size: 10px; color: var(--gold-dim); margin-bottom: 4px; }
+.cv-bullets { padding-left: 14px; }
+.cv-bullets li { margin: 2px 0; font-size: 10px; color: var(--text-mid); }
+.cv-skills-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.cv-skill-pill {
+  font-size: 9px;
+  background: var(--cream-2);
+  color: var(--text-mid);
+  border: 1px solid var(--cream-3);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+.cv-empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-light);
+}
+.cv-empty-icon { font-size: 40px; margin-bottom: 1rem; opacity: 0.3; }
+.cv-empty-text { font-size: 13px; line-height: 1.6; }
+
+/* Suggestions panel */
+.suggestions-panel {
+  background: var(--white);
+  border-top: 1px solid var(--cream-3);
+  padding: 1rem 1.25rem;
+  flex-shrink: 0;
+}
+.suggestions-title { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.suggestion-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 11px; color: var(--text-mid);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--cream-2);
+}
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-icon { color: var(--warning); flex-shrink: 0; margin-top: 1px; }
+
+/* ============ FEATURES SECTION ============ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--cream-3);
+  border-radius: var(--r-lg);
+  padding: 2rem;
+  transition: var(--transition);
+}
+.feature-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.feature-icon {
+  width: 48px; height: 48px;
+  background: var(--navy);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 1.25rem;
+}
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.feature-desc {
+  font-size: 14px; font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+/* ============ HOW IT WORKS ============ */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  margin-top: 3rem;
+}
+.how-grid::before {
+  content: '';
+  position: absolute;
+  top: 32px; left: 16%; right: 16%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cream-3), var(--gold), var(--cream-3));
+}
+.how-step { text-align: center; }
+.how-num {
+  width: 64px; height: 64px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--gold);
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+}
+.how-title { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.how-desc { font-size: 14px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2rem;
+  font-size: 13px;
+}
+footer strong { color: var(--gold-2); }
+
+/* ============ TOAST ============ */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  border-left: 3px solid var(--gold);
+  max-width: 320px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { border-left-color: #2D7D4F; }
+.toast.error { border-left-color: var(--danger); }
+
+/* ============ LOADING SPINNER ============ */
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cream-3); border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cream-3); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) {
+  .builder-wrap { grid-template-columns: 260px 1fr 340px; }
+}
+@media (max-width: 900px) {
+  .builder-wrap { grid-template-columns: 1fr; grid-template-rows: auto; min-height: auto; }
+  .builder-left { display: none; }
+  .builder-right { border-left: none; border-top: 1px solid var(--cream-3); max-height: 500px; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-grid::before { display: none; }
+  .nav-links { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in { animation: fadeIn 0.5s ease both; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+[data-delay="1"] { animation-delay: 0.1s; }
+[data-delay="2"] { animation-delay: 0.2s; }
+[data-delay="3"] { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">N</div>
+    <div class="nav-name">Nazu <em>AI</em></div>
+  </a>
+  <div class="nav-links">
+    <a href="#builder" class="nav-link active">Builder</a>
+    <a href="#features" class="nav-link">Fitur</a>
+    <a href="#how" class="nav-link">Cara Kerja</a>
+  </div>
+  <a href="#builder" class="nav-cta">Buat CV Gratis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Powered by Claude AI · 100% ATS-Compatible
+    </div>
+    <h1 class="hero-title">
+      CV Profesional yang<br>
+      <em>Lolos ATS & Dipilih HRD</em>
+    </h1>
+    <p class="hero-subtitle">
+      Buat CV berbasis AI dalam hitungan menit. Otomatis dioptimasi untuk Applicant Tracking System, ditulis secara humanis, dan disesuaikan dengan Job Description Anda.
+    </p>
+    <div class="hero-actions">
+      <a href="#builder" class="btn-primary">✦ Buat CV Sekarang</a>
+      <a href="#how" class="btn-secondary">Lihat Cara Kerja →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">3x</div>
+        <div class="hero-stat-label">Lebih cepat dari manual</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">95%</div>
+        <div class="hero-stat-label">Skor ATS rata-rata</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Teks selectable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER SECTION -->
+<section class="section" id="builder">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-label">CV Builder</div>
+      <h2 class="section-title">Bangun CV Anda Sekarang</h2>
+      <p class="section-desc" style="margin:0 auto;">Isi form, ceritakan pengalaman Anda, atau biarkan AI yang mengekstrak dari narasi bebas Anda.</p>
+    </div>
+
+    <div class="builder-wrap">
+
+      <!-- LEFT: Navigation + AI Input + ATS -->
+      <div class="builder-left">
+        <div>
+          <div class="builder-nav-title">Navigasi</div>
+          <div class="step-nav" id="step-nav">
+            <div class="step-item active" onclick="goTab('identitas',0)">
+              <div class="step-num" id="sn-0">1</div>
+              <div>
+                <div class="step-label">Identitas</div>
+              </div>
+            </div>
+            <div class="step-item" onclick="goTab('ringkasan',1)">
+              <div class="step-num" id="sn-1">2</div>
+              <div class="step-label">Ringkasan Profesional</div>
+            </div>
+            <div class="step-item" onclick="goTab('pengalaman',2)">
+              <div class="step-num" id="sn-2">3</div>
+              <div class="step-label">Pengalaman Kerja</div>
+            </div>
+            <div class="step-item" onclick="goTab('pendidikan',3)">
+              <div class="step-num" id="sn-3">4</div>
+              <div class="step-label">Pendidikan</div>
+            </div>
+            <div class="step-item" onclick="goTab('skill',4)">
+              <div class="step-num" id="sn-4">5</div>
+              <div class="step-label">Skill & Sertifikasi</div>
+            </div>
+            <div class="step-item" onclick="goTab('jd',5)">
+              <div class="step-num" id="sn-5">6</div>
+              <div class="step-label">Analisis JD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-input-card">
+          <div class="ai-input-label">AI Assistant</div>
+          <textarea class="ai-textarea" id="ai-textarea" placeholder="Ceritakan pengalaman Anda secara bebas atau paste CV lama di sini. AI akan otomatis mengisi form..." rows="5"></textarea>
+          <button class="ai-send-btn" id="ai-send-btn" onclick="processWithAI()">
+            <span id="ai-btn-text">✦ Proses dengan AI</span>
+          </button>
+        </div>
+
+        <div class="ats-widget">
+          <div class="ats-widget-title">ATS Score</div>
+          <div class="ats-gauge">
+            <div class="ats-score-big" id="ats-big">—</div>
+            <div class="ats-score-label">Skor Kecocokan</div>
+          </div>
+          <div class="ats-bar-track">
+            <div class="ats-bar-fill" id="ats-fill" style="width:0%;background:var(--gold)"></div>
+          </div>
+          <div class="ats-verdict" id="ats-verdict">Tambahkan Job Description untuk analisis</div>
+          <div class="ats-breakdown" id="ats-breakdown" style="display:none">
+            <div class="ats-row">
+              <div class="ats-row-label">Keywords</div>
+              <div class="ats-row-bar"><div class="ats-row-fill" id="ab-kw" style="width:0%"></div></div>
+              <div class="ats-row-val" id="av-kw">—</div>
+            </div>
+            <div class="ats-row">
+              <div class="ats-row-label">Pengalaman</div>
+              <div class="ats-row-bar"><div class="ats-row-fill" id="ab-ex" style="width:0%"></div></div>
+              <div class="ats-row-val" id="av-ex">—</div>
+            </div>
+            <div class="ats-row">
+              <div class="ats-row-label">Pendidikan</div>
+              <div class="ats-row-bar"><div class="ats-row-fill" id="ab-ed" style="width:0%"></div></div>
+              <div class="ats-row-val" id="av-ed">—</div>
+            </div>
+            <div class="ats-row">
+              <div class="ats-row-label">Skills</div>
+              <div class="ats-row-bar"><div class="ats-row-fill" id="ab-sk" style="width:0%"></div></div>
+              <div class="ats-row-val" id="av-sk">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIDDLE: Form Tabs -->
+      <div class="builder-mid">
+        <div class="builder-tabs">
+          <button class="builder-tab active" onclick="switchTab('identitas',0)">Identitas</button>
+          <button class="builder-tab" onclick="switchTab('ringkasan',1)">Ringkasan</button>
+          <button class="builder-tab" onclick="switchTab('pengalaman',2)">Pengalaman</button>
+          <button class="builder-tab" onclick="switchTab('pendidikan',3)">Pendidikan</button>
+          <button class="builder-tab" onclick="switchTab('skill',4)">Skill</button>
+          <button class="builder-tab" onclick="switchTab('jd',5)">Analisis JD</button>
+        </div>
+
+        <!-- Tab: Identitas -->
+        <div class="tab-panel active" id="tab-identitas">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nama Lengkap <span>*</span></label>
+              <input class="form-input" id="f-name" type="text" placeholder="Budi Santoso" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Posisi Target <span>*</span></label>
+              <input class="form-input" id="f-position" type="text" placeholder="Software Engineer" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Email <span>*</span></label>
+              <input class="form-input" id="f-email" type="email" placeholder="budi@email.com" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">No. HP / WhatsApp</label>
+              <input class="form-input" id="f-phone" type="text" placeholder="+62 812 3456 7890" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Kota Domisili</label>
+              <input class="form-input" id="f-city" type="text" placeholder="Jakarta Selatan" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">LinkedIn URL</label>
+              <input class="form-input" id="f-linkedin" type="text" placeholder="linkedin.com/in/budi" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Portfolio / Website</label>
+            <input class="form-input" id="f-portfolio" type="text" placeholder="budisantoso.dev" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <!-- Tab: Ringkasan -->
+        <div class="tab-panel" id="tab-ringkasan">
+          <div class="form-group">
+            <label class="form-label">Professional Summary <span>*</span></label>
+            <textarea class="form-textarea" id="f-summary" rows="5" placeholder="Profesional di bidang teknologi dengan 5+ tahun pengalaman dalam pengembangan aplikasi web skala besar..." oninput="updatePreview()" style="min-height:120px;"></textarea>
+            <div class="form-hint">2-3 kalimat yang menggambarkan keahlian, pengalaman, dan nilai yang Anda tawarkan.</div>
+          </div>
+          <button class="ai-expand-btn" id="gen-summary-btn" onclick="generateSummary()">
+            ✦ Generate otomatis dengan AI
+          </button>
+        </div>
+
+        <!-- Tab: Pengalaman -->
+        <div class="tab-panel" id="tab-pengalaman">
+          <div id="exp-list"></div>
+          <button class="add-entry-btn" onclick="addExperience()">+ Tambah Pengalaman Kerja</button>
+        </div>
+
+        <!-- Tab: Pendidikan -->
+        <div class="tab-panel" id="tab-pendidikan">
+          <div id="edu-list"></div>
+          <button class="add-entry-btn" onclick="addEducation()">+ Tambah Pendidikan</button>
+        </div>
+
+        <!-- Tab: Skill -->
+        <div class="tab-panel" id="tab-skill">
+          <div class="form-group">
+            <label class="form-label">Skills</label>
+            <div class="skills-grid" id="skills-grid"></div>
+            <div class="skill-add-row">
+              <input class="form-input" id="skill-input" placeholder="Tambah skill (contoh: Python, Figma, Leadership)..." onkeydown="if(event.key==='Enter'){addSkill();event.preventDefault()}">
+              <button class="btn-primary" style="padding:10px 20px;white-space:nowrap;font-size:13px;" onclick="addSkill()">Tambah</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:2rem;">
+            <label class="form-label">Sertifikasi & Pelatihan</label>
+            <div id="cert-list"></div>
+            <button class="add-entry-btn" onclick="addCert()">+ Tambah Sertifikasi</button>
+          </div>
+        </div>
+
+        <!-- Tab: JD Analyzer -->
+        <div class="tab-panel" id="tab-jd">
+          <div class="jd-panel">
+            <label class="form-label">Paste Job Description</label>
+            <textarea class="jd-textarea" id="jd-textarea" placeholder="Tempel Job Description dari lowongan yang Anda incar di sini...&#10;&#10;Contoh: &#10;Kami mencari Software Engineer dengan pengalaman minimal 3 tahun di bidang pengembangan web..."></textarea>
+            <button class="analyze-btn" id="analyze-btn" onclick="analyzeJD()">
+              <span id="analyze-btn-text">◎ Analisis Kecocokan CV</span>
+            </button>
+          </div>
+          <div id="kw-results" style="display:none;">
+            <div class="form-group">
+              <label class="form-label" style="color:var(--success);">✓ Keyword Sudah Ada di CV</label>
+              <div class="kw-tags" id="kw-found"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color:var(--danger);">✗ Keyword Belum Ada — Perlu Ditambahkan</label>
+              <div class="kw-tags" id="kw-missing"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Rekomendasi Perbaikan</label>
+              <div id="reco-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CV Preview -->
+      <div class="builder-right">
+        <div class="preview-topbar">
+          <div class="preview-topbar-title">Preview CV</div>
+          <div class="preview-actions">
+            <button class="preview-btn-sm" onclick="copyPlainText()">Salin Teks</button>
+            <button class="preview-btn-sm gold" onclick="downloadTxt()">⬇ Download</button>
+          </div>
+        </div>
+        <div class="cv-preview-scroll">
+          <div class="cv-paper" id="cv-paper">
+            <div class="cv-empty-state">
+              <div class="cv-empty-icon">◈</div>
+              <div class="cv-empty-text">Preview CV Anda akan muncul di sini.<br><br>Mulai isi form atau gunakan AI Assistant untuk mengisi otomatis.</div>
+            </div>
+          </div>
+        </div>
+        <div class="suggestions-panel" id="suggestions-panel" style="display:none;">
+          <div class="suggestions-title">💡 Saran AI</div>
+          <div id="suggestions-list"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features" style="background:var(--white);">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label">Keunggulan</div>
+      <h2 class="section-title">Mengapa Memilih Nazu AI?</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">ATS-Optimized</div>
+        <div class="feature-desc">CV diformat sesuai standar Applicant Tracking System — teks selectable, header standar, tanpa grafik yang membingungkan mesin ATS.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="1">
+        <div class="feature-icon">✦</div>
+        <div class="feature-title">AI-Powered</div>
+        <div class="feature-desc">Didukung Claude AI untuk mengekstrak data dari narasi bebas, mengembangkan deskripsi, dan mengoptimasi keyword secara otomatis.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="2">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Analisis JD</div>
+        <div class="feature-desc">Upload Job Description dan dapatkan skor kecocokan, daftar keyword yang kurang, dan rekomendasi spesifik untuk meningkatkan peluang Anda.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="3">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Cepat & Mudah</div>
+        <div class="feature-desc">Selesai dalam hitungan menit. Cukup ceritakan pengalaman Anda secara bebas — AI yang akan mengstrukturisasi dan mengoptimasi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label">Alur Kerja</div>
+      <h2 class="section-title">3 Tahap Menuju CV Sempurna</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-title">Parser</div>
+        <div class="how-desc">AI mengekstrak dan menstrukturisasi informasi dari input Anda — bisa narasi bebas, CV lama, atau form terstruktur.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-title">Humanizer</div>
+        <div class="how-desc">Setiap poin dikembangkan menjadi deskripsi profesional dengan action verbs dan hasil terukur yang meyakinkan HRD.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-title">ATS Auditor</div>
+        <div class="how-desc">CV dioptimasi untuk mesin ATS, dianalisis terhadap Job Description, dan diberikan skor kecocokan yang akurat.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Nazu AI</strong> Career Specialist · Powered by Claude AI · © 2025 · Semua hak dilindungi
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- ================================================================
+     JAVASCRIPT — Full Application Logic
+     ================================================================ -->
+<script>
+const API_BASE = 'http://localhost:8000/api';
+
+// ── State ──────────────────────────────────────────────────────────
+let cvState = {
+  name:'', target_position:'', email:'', phone:'', city:'', linkedin:'', portfolio:'',
+  professional_summary:'',
+  work_experience:[],
+  education:[],
+  skills:[],
+  certifications:[]
+};
+let expCount = 0, eduCount = 0, certCount = 0;
+let conversationHistory = [];
+
+// ── Tab Navigation ─────────────────────────────────────────────────
+function switchTab(id, idx) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.builder-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.builder-tab')[idx].classList.add('active');
+  document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.step-item')[idx].classList.add('active');
+}
+function goTab(id, idx) { switchTab(id, idx); }
+
+// ── Work Experience ────────────────────────────────────────────────
+function addExperience(data={}) {
+  const id = expCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'exp-' + id;
+  div.innerHTML = `
+    <div class="entry-card-header">
+      <div>
+        <div class="entry-card-title">Pengalaman Kerja ${id+1}</div>
+        <div class="entry-card-sub" id="exp-sub-${id}">Isi detail di bawah ini</div>
+      </div>
+      <button class="entry-remove" onclick="removeExp(${id})">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Posisi / Jabatan <span>*</span></label>
+        <input class="form-input" id="ep-${id}" value="${data.position||''}" placeholder="Software Engineer" oninput="updateExpSub(${id});updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nama Perusahaan <span>*</span></label>
+        <input class="form-input" id="ec-${id}" value="${data.company||''}" placeholder="PT Maju Bersama" oninput="updateExpSub(${id});updatePreview()">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Periode</label>
+      <input class="form-input" id="ed-${id}" value="${data.period||''}" placeholder="Januari 2022 – Desember 2023" oninput="updatePreview()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Deskripsi & Pencapaian</label>
+      <div class="bullet-list" id="bullets-${id}"></div>
+      <button class="add-entry-btn" style="padding:8px;font-size:12px;margin-top:4px;" onclick="addBullet(${id})">+ Tambah Poin</button>
+    </div>
+    <button class="ai-expand-btn" id="ai-exp-btn-${id}" onclick="expandDescription(${id})">
+      ✦ AI Kembangkan Deskripsi
+    </button>`;
+  document.getElementById('exp-list').appendChild(div);
+  const bullets = data.achievements || [''];
+  bullets.forEach(b => addBullet(id, b));
+  if (!data.achievements?.length) addBullet(id);
+}
+function updateExpSub(id) {
+  const pos = document.getElementById('ep-'+id)?.value;
+  const co = document.getElementById('ec-'+id)?.value;
+  const sub = document.getElementById('exp-sub-'+id);
+  if (sub && (pos||co)) sub.textContent = [pos,co].filter(Boolean).join(' — ');
+}
+function removeExp(id) {
+  document.getElementById('exp-'+id)?.remove();
+  updatePreview();
+}
+function addBullet(expId, text='') {
+  const container = document.getElementById('bullets-'+expId);
+  if (!container) return;
+  const row = document.createElement('div');
+  row.className = 'bullet-row';
+  row.innerHTML = `
+    <div class="bullet-dot">•</div>
+    <textarea class="bullet-input" rows="2" placeholder="Mempelopori pengembangan fitur X yang meningkatkan konversi sebesar 20%..." oninput="updatePreview()">${text}</textarea>
+    <button class="bullet-remove" onclick="this.parentElement.remove();updatePreview()">×</button>`;
+  container.appendChild(row);
+}
+
+// ── Education ──────────────────────────────────────────────────────
+function addEducation(data={}) {
+  const id = eduCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'edu-' + id;
+  div.innerHTML = `
+    <div class="entry-card-header">
+      <div>
+        <div class="entry-card-title">Pendidikan ${id+1}</div>
+      </div>
+      <button class="entry-remove" onclick="document.getElementById('edu-${id}').remove();updatePreview()">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Gelar</label>
+        <input class="form-input" id="edg-${id}" value="${data.degree||''}" placeholder="Sarjana (S1)" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Jurusan / Program Studi</label>
+        <input class="form-input" id="edm-${id}" value="${data.major||''}" placeholder="Teknik Informatika" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Nama Institusi <span>*</span></label>
+        <input class="form-input" id="edi-${id}" value="${data.institution||''}" placeholder="Universitas Indonesia" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tahun Lulus</label>
+        <input class="form-input" id="edy-${id}" value="${data.year||''}" placeholder="2020" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-group" style="max-width:160px;">
+      <label class="form-label">IPK (opsional)</label>
+      <input class="form-input" id="edgpa-${id}" value="${data.gpa||''}" placeholder="3.75" oninput="updatePreview()">
+    </div>`;
+  document.getElementById('edu-list').appendChild(div);
+}
+
+// ── Skills ─────────────────────────────────────────────────────────
+function addSkill() {
+  const input = document.getElementById('skill-input');
+  const val = input.value.trim();
+  if (!val) return;
+  val.split(',').forEach(s => {
+    const skill = s.trim();
+    if (!skill || cvState.skills.includes(skill)) return;
+    cvState.skills.push(skill);
+  });
+  input.value = '';
+  renderSkills();
+  updatePreview();
+}
+function removeSkill(s) {
+  cvState.skills = cvState.skills.filter(x => x !== s);
+  renderSkills();
+  updatePreview();
+}
+function renderSkills() {
+  const grid = document.getElementById('skills-grid');
+  grid.innerHTML = cvState.skills.map(s => `
+    <div class="skill-tag active">
+      ${s}
+      <span class="skill-remove" onclick="removeSkill('${s.replace(/'/g,"\\'")}')">×</span>
+    </div>`).join('');
+}
+
+// ── Certifications ─────────────────────────────────────────────────
+function addCert(data={}) {
+  const id = certCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'cert-' + id;
+  div.style.padding = '1rem';
+  div.innerHTML = `
+    <div class="entry-card-header" style="margin-bottom:0.75rem;">
+      <div class="entry-card-title" style="font-size:13px;">Sertifikasi ${id+1}</div>
+      <button class="entry-remove" onclick="document.getElementById('cert-${id}').remove();updatePreview()">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group" style="margin:0;">
+        <input class="form-input" id="cn-${id}" value="${data.name||''}" placeholder="Nama Sertifikasi" oninput="updatePreview()">
+      </div>
+      <div class="form-group" style="margin:0;">
+        <input class="form-input" id="ci-${id}" value="${data.issuer||''}" placeholder="Lembaga Penerbit" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:8px;max-width:120px;">
+      <input class="form-input" id="cy-${id}" value="${data.year||''}" placeholder="Tahun" oninput="updatePreview()">
+    </div>`;
+  document.getElementById('cert-list').appendChild(div);
+}
+
+// ── Collect Form Data ──────────────────────────────────────────────
+function collectFormData() {
+  cvState.name = document.getElementById('f-name')?.value || '';
+  cvState.target_position = document.getElementById('f-position')?.value || '';
+  cvState.email = document.getElementById('f-email')?.value || '';
+  cvState.phone = document.getElementById('f-phone')?.value || '';
+  cvState.city = document.getElementById('f-city')?.value || '';
+  cvState.linkedin = document.getElementById('f-linkedin')?.value || '';
+  cvState.portfolio = document.getElementById('f-portfolio')?.value || '';
+  cvState.professional_summary = document.getElementById('f-summary')?.value || '';
+
+  cvState.work_experience = [];
+  for (let i = 0; i < expCount; i++) {
+    if (!document.getElementById('exp-'+i)) continue;
+    const achievements = Array.from(document.querySelectorAll(`#bullets-${i} .bullet-input`))
+      .map(t => t.value.trim()).filter(Boolean);
+    cvState.work_experience.push({
+      position: document.getElementById('ep-'+i)?.value || '',
+      company: document.getElementById('ec-'+i)?.value || '',
+      period: document.getElementById('ed-'+i)?.value || '',
+      achievements
+    });
+  }
+
+  cvState.education = [];
+  for (let i = 0; i < eduCount; i++) {
+    if (!document.getElementById('edu-'+i)) continue;
+    cvState.education.push({
+      degree: document.getElementById('edg-'+i)?.value || '',
+      major: document.getElementById('edm-'+i)?.value || '',
+      institution: document.getElementById('edi-'+i)?.value || '',
+      year: document.getElementById('edy-'+i)?.value || '',
+      gpa: document.getElementById('edgpa-'+i)?.value || ''
+    });
+  }
+
+  cvState.certifications = [];
+  for (let i = 0; i < certCount; i++) {
+    if (!document.getElementById('cert-'+i)) continue;
+    cvState.certifications.push({
+      name: document.getElementById('cn-'+i)?.value || '',
+      issuer: document.getElementById('ci-'+i)?.value || '',
+      year: document.getElementById('cy-'+i)?.value || ''
+    });
+  }
+
+  return cvState;
+}
+
+// ── Fill Form From AI Data ─────────────────────────────────────────
+function fillFormFromData(data) {
+  if (!data) return;
+  if (data.name) document.getElementById('f-name').value = data.name;
+  if (data.target_position) document.getElementById('f-position').value = data.target_position;
+  if (data.email) document.getElementById('f-email').value = data.email;
+  if (data.phone) document.getElementById('f-phone').value = data.phone;
+  if (data.city) document.getElementById('f-city').value = data.city;
+  if (data.linkedin) document.getElementById('f-linkedin').value = data.linkedin;
+  if (data.portfolio) document.getElementById('f-portfolio').value = data.portfolio;
+  if (data.professional_summary) document.getElementById('f-summary').value = data.professional_summary;
+
+  if (data.work_experience?.length) {
+    document.getElementById('exp-list').innerHTML = '';
+    expCount = 0;
+    data.work_experience.forEach(e => addExperience(e));
+  }
+  if (data.education?.length) {
+    document.getElementById('edu-list').innerHTML = '';
+    eduCount = 0;
+    data.education.forEach(e => addEducation(e));
+  }
+  if (data.skills?.length) {
+    cvState.skills = data.skills;
+    renderSkills();
+  }
+  if (data.certifications?.length) {
+    document.getElementById('cert-list').innerHTML = '';
+    certCount = 0;
+    data.certifications.forEach(c => addCert(c));
+  }
+  updatePreview();
+}
+
+// ── AI Process ────────────────────────────────────────────────────
+async function processWithAI() {
+  const text = document.getElementById('ai-textarea').value.trim();
+  if (!text) { showToast('Masukkan teks terlebih dahulu.', 'error'); return; }
+
+  const btn = document.getElementById('ai-send-btn');
+  const btnText = document.getElementById('ai-btn-text');
+  btn.disabled = true;
+  btnText.innerHTML = '<span class="spinner"></span> Memproses...';
+
+  try {
+    collectFormData();
+    const resp = await fetch(`${API_BASE}/cv/process`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        user_input: text,
+        existing_cv: cvState,
+        conversation_history: conversationHistory
+      })
+    });
+    const result = await resp.json();
+    if (!result.success) throw new Error(result.detail || 'Error');
+    
+    conversationHistory.push({role:'user', content: text});
+    conversationHistory.push({role:'assistant', content: JSON.stringify(result.data)});
+    if (conversationHistory.length > 12) conversationHistory = conversationHistory.slice(-12);
+
+    const d = result.data;
+    if (d.cv_data) fillFormFromData(d.cv_data);
+    if (d.suggestions?.length) showSuggestions(d.suggestions);
+    if (d.message) showToast(d.message.substring(0,100) + (d.message.length>100?'...':''), 'success');
+    
+    document.getElementById('ai-textarea').value = '';
+  } catch(e) {
+    showToast('Koneksi ke backend gagal. Pastikan server Python berjalan di localhost:8000', 'error');
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    btnText.innerHTML = '✦ Proses dengan AI';
+  }
+}
+
+async function expandDescription(expId) {
+  const btn = document.getElementById('ai-exp-btn-'+expId);
+  if (!btn) return;
+  const pos = document.getElementById('ep-'+expId)?.value;
+  const co = document.getElementById('ec-'+expId)?.value;
+  const bullets = Array.from(document.querySelectorAll(`#bullets-${expId} .bullet-input`)).map(t=>t.value).join('; ');
+  if (!pos && !bullets) { showToast('Isi posisi dan deskripsi singkat terlebih dahulu.','error'); return; }
+  
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> AI sedang menulis...';
+  try {
+    const resp = await fetch(`${API_BASE}/cv/expand-description`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({position:pos, company:co, description:bullets})
+    });
+    const result = await resp.json();
+    if (!result.success) throw new Error();
+    const container = document.getElementById('bullets-'+expId);
+    container.innerHTML = '';
+    result.bullets.forEach(b => addBullet(expId, b));
+    updatePreview();
+    showToast('Deskripsi berhasil dikembangkan oleh AI!','success');
+  } catch(e) {
+    showToast('Gagal menghubungi AI. Cek koneksi backend.','error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '✦ AI Kembangkan Deskripsi';
+  }
+}
+
+async function generateSummary() {
+  const btn = document.getElementById('gen-summary-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Generating...';
+  try {
+    collectFormData();
+    const resp = await fetch(`${API_BASE}/cv/generate-summary`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(cvState)
+    });
+    const result = await resp.json();
+    if (result.success) {
+      document.getElementById('f-summary').value = result.summary;
+      updatePreview();
+      showToast('Summary profesional berhasil dibuat!','success');
+    }
+  } catch(e) {
+    showToast('Gagal generate summary.','error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '✦ Generate otomatis dengan AI';
+  }
+}
+
+async function analyzeJD() {
+  const jd = document.getElementById('jd-textarea').value.trim();
+  if (!jd) { showToast('Paste Job Description terlebih dahulu.','error'); return; }
+  
+  const btn = document.getElementById('analyze-btn');
+  const btnText = document.getElementById('analyze-btn-text');
+  btn.disabled = true;
+  btnText.innerHTML = '<span class="spinner"></span> Menganalisis...';
+
+  try {
+    collectFormData();
+    const resp = await fetch(`${API_BASE}/ats/analyze`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({cv_data: cvState, job_description: jd})
+    });
+    const result = await resp.json();
+    if (!result.success) throw new Error();
+    const a = result.analysis;
+
+    // Update ATS widget
+    const score = a.overall_score || 0;
+    document.getElementById('ats-big').textContent = score + '%';
+    document.getElementById('ats-fill').style.width = score + '%';
+    document.getElementById('ats-fill').style.background = score>=80?'#2D7D4F':score>=60?'var(--gold)':'var(--danger)';
+    document.getElementById('ats-verdict').innerHTML = `Status: <strong>${a.verdict||''}</strong>`;
+    
+    const bd = a.breakdown || {};
+    document.getElementById('ats-breakdown').style.display = 'flex';
+    [['kw',bd.keywords_match],['ex',bd.experience_relevance],['ed',bd.education_match],['sk',bd.skills_match]].forEach(([k,v])=>{
+      document.getElementById('ab-'+k).style.width = (v||0)+'%';
+      document.getElementById('av-'+k).textContent = (v||0)+'%';
+    });
+
+    // Keyword results
+    document.getElementById('kw-results').style.display = 'block';
+    document.getElementById('kw-found').innerHTML = (a.matched_keywords||[]).map(k=>`<div class="kw-tag found">✓ ${k}</div>`).join('');
+    document.getElementById('kw-missing').innerHTML = (a.missing_keywords||[]).map(k=>`<div class="kw-tag missing">✗ ${k}</div>`).join('');
+    
+    const recoList = document.getElementById('reco-list');
+    recoList.innerHTML = (a.recommendations||[]).map(r=>`
+      <div class="suggestion-item">
+        <div class="suggestion-icon">→</div>
+        <div>${r}</div>
+      </div>`).join('');
+
+    if (a.suggestions) showSuggestions(a.suggestions);
+    showToast(`Analisis selesai! Skor ATS: ${score}%`, score>=70?'success':'');
+  } catch(e) {
+    showToast('Gagal menganalisis. Cek koneksi backend.','error');
+  } finally {
+    btn.disabled = false;
+    btnText.innerHTML = '◎ Analisis Kecocokan CV';
+  }
+}
+
+// ── CV Preview ─────────────────────────────────────────────────────
+function updatePreview() {
+  const d = collectFormData();
+  const hasContent = d.name || d.professional_summary || d.work_experience.length || d.education.length;
+  
+  if (!hasContent) {
+    document.getElementById('cv-paper').innerHTML = `
+      <div class="cv-empty-state">
+        <div class="cv-empty-icon">◈</div>
+        <div class="cv-empty-text">Preview CV Anda akan muncul di sini.<br><br>Mulai isi form atau gunakan AI Assistant.</div>
+      </div>`;
+    return;
+  }
+
+  const contacts = [d.email,d.phone,d.city,d.linkedin,d.portfolio].filter(Boolean);
+
+  let expHTML = '';
+  d.work_experience.forEach(e => {
+    if (!e.position && !e.company) return;
+    expHTML += `
+      <div class="cv-job-hd">
+        <div class="cv-job-title-text">${e.position||''}</div>
+        <div class="cv-job-period">${e.period||''}</div>
+      </div>
+      <div class="cv-job-co">${e.company||''}</div>
+      ${e.achievements?.length ? `<ul class="cv-bullets">${e.achievements.map(a=>`<li>${a}</li>`).join('')}</ul>` : ''}
+      <div style="height:8px;"></div>`;
+  });
+
+  let eduHTML = '';
+  d.education.forEach(e => {
+    if (!e.institution) return;
+    const deg = [e.degree,e.major].filter(Boolean).join(' ');
+    const det = [e.institution, e.year?`Lulus ${e.year}`:'', e.gpa?`IPK ${e.gpa}`:''].filter(Boolean).join(' | ');
+    eduHTML += `<div class="cv-job-title-text">${deg}</div><div class="cv-job-co">${det}</div><div style="height:6px;"></div>`;
+  });
+
+  let certHTML = '';
+  d.certifications.forEach(c => {
+    if (!c.name) return;
+    certHTML += `<li>${c.name}${c.issuer?' — '+c.issuer:''}${c.year?' ('+c.year+')':''}</li>`;
+  });
+
+  document.getElementById('cv-paper').innerHTML = `
+    <div class="cv-paper-name">${d.name||'Nama Anda'}</div>
+    <div class="cv-paper-pos">${d.target_position||''}</div>
+    <div class="cv-paper-contacts">${contacts.map(c=>`<span>${c}</span>`).join('<span style="opacity:.3">|</span>')}</div>
+    ${d.professional_summary?`<div class="cv-section"><div class="cv-section-hd">Professional Summary</div><div style="font-size:10px;color:var(--text-mid);line-height:1.65;">${d.professional_summary}</div></div>`:''}
+    ${expHTML?`<div class="cv-section"><div class="cv-section-hd">Work Experience</div>${expHTML}</div>`:''}
+    ${eduHTML?`<div class="cv-section"><div class="cv-section-hd">Education</div>${eduHTML}</div>`:''}
+    ${d.skills?.length?`<div class="cv-section"><div class="cv-section-hd">Skills</div><div class="cv-skills-wrap">${d.skills.map(s=>`<div class="cv-skill-pill">${s}</div>`).join('')}</div></div>`:''}
+    ${certHTML?`<div class="cv-section"><div class="cv-section-hd">Certifications</div><ul class="cv-bullets">${certHTML}</ul></div>`:''}
+  `;
+}
+
+function showSuggestions(list) {
+  if (!list?.length) return;
+  const panel = document.getElementById('suggestions-panel');
+  const container = document.getElementById('suggestions-list');
+  panel.style.display = 'block';
+  container.innerHTML = list.slice(0,4).map(s=>`
+    <div class="suggestion-item">
+      <div class="suggestion-icon">⚡</div>
+      <div>${s}</div>
+    </div>`).join('');
+}
+
+// ── Export ─────────────────────────────────────────────────────────
+function copyPlainText() {
+  const d = collectFormData();
+  let txt = '';
+  txt += d.name + '\n' + d.target_position + '\n';
+  txt += [d.email,d.phone,d.city,d.linkedin,d.portfolio].filter(Boolean).join(' | ') + '\n\n';
+  if (d.professional_summary) txt += 'PROFESSIONAL SUMMARY\n' + '-'.repeat(36) + '\n' + d.professional_summary + '\n\n';
+  if (d.work_experience.length) {
+    txt += 'WORK EXPERIENCE\n' + '-'.repeat(36) + '\n';
+    d.work_experience.forEach(e => {
+      txt += `${e.position} — ${e.company}\n${e.period}\n`;
+      e.achievements.forEach(a => txt += `• ${a}\n`);
+      txt += '\n';
+    });
+  }
+  if (d.education.length) {
+    txt += 'EDUCATION\n' + '-'.repeat(36) + '\n';
+    d.education.forEach(e => {
+      txt += `${e.degree} ${e.major}\n${e.institution}${e.year?' | Lulus '+e.year:''}${e.gpa?' | IPK '+e.gpa:''}\n\n`;
+    });
+  }
+  if (d.skills.length) txt += 'SKILLS\n' + '-'.repeat(36) + '\n' + d.skills.join(', ') + '\n\n';
+  if (d.certifications.length) {
+    txt += 'CERTIFICATIONS\n' + '-'.repeat(36) + '\n';
+    d.certifications.forEach(c => txt += `• ${c.name}${c.issuer?' — '+c.issuer:''}${c.year?' ('+c.year+')':''}\n`);
+  }
+  navigator.clipboard.writeText(txt).then(() => showToast('CV berhasil disalin ke clipboard!','success'));
+}
+
+function downloadTxt() {
+  const d = collectFormData();
+  if (!d.name && !d.professional_summary) { showToast('CV masih kosong!','error'); return; }
+  let txt = '';
+  txt += d.name + '\n' + d.target_position + '\n';
+  txt += [d.email,d.phone,d.city,d.linkedin,d.portfolio].filter(Boolean).join(' | ') + '\n\n';
+  if (d.professional_summary) txt += 'PROFESSIONAL SUMMARY\n' + '='.repeat(40) + '\n' + d.professional_summary + '\n\n';
+  if (d.work_experience.length) {
+    txt += 'WORK EXPERIENCE\n' + '='.repeat(40) + '\n';
+    d.work_experience.forEach(e => {
+      txt += `${e.position} — ${e.company}\n${e.period}\n`;
+      e.achievements.forEach(a => txt += `• ${a}\n`);
+      txt += '\n';
+    });
+  }
+  if (d.education.length) {
+    txt += 'EDUCATION\n' + '='.repeat(40) + '\n';
+    d.education.forEach(e => {
+      txt += `${e.degree} ${e.major}\n${e.institution}${e.year?' | '+e.year:''}${e.gpa?' | IPK '+e.gpa:''}\n\n`;
+    });
+  }
+  if (d.skills.length) txt += 'SKILLS\n' + '='.repeat(40) + '\n' + d.skills.join(', ') + '\n\n';
+  if (d.certifications.length) {
+    txt += 'CERTIFICATIONS\n' + '='.repeat(40) + '\n';
+    d.certifications.forEach(c => txt += `• ${c.name}${c.issuer?' — '+c.issuer:''}${c.year?' ('+c.year+')':''}\n`);
+  }
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(txt);
+  a.download = `CV_${d.name.replace(/\s+/g,'_') || 'NazuAI'}.txt`;
+  a.click();
+  showToast('CV berhasil diunduh!','success');
+}
+
+// ── Toast ──────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.className = 'toast', 3500);
+}
+
+// ── Init ───────────────────────────────────────────────────────────
+addExperience();
+addEducation();
+</script>
+</body>
+</html>
