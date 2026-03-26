@@ -20,7 +20,7 @@ class KeywordsRequest(BaseModel):
 async def analyze_ats(request: ATSRequest):
     """Full ATS analysis: score, keywords, recommendations"""
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash-latest")
         prompt = f"""Kamu adalah ATS (Applicant Tracking System) expert. Analisis kecocokan CV ini dengan Job Description.
 
 CV DATA:
@@ -73,7 +73,7 @@ Kembalikan HANYA JSON berikut (tidak ada teks lain):
 async def extract_keywords(request: KeywordsRequest):
     """Extract important keywords from job description"""
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash-latest")
         prompt = f"""Ekstrak keyword penting dari Job Description ini untuk keperluan ATS optimization.
 
 JD: {request.job_description}
