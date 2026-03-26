@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -1757,6 +1757,1756 @@ addExperience();
 addEducation();
 setLang('en');
 lucide.createIcons();
+</script>
+</body>
+</html>
+ -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Maker — by Nazu</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1426'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23C8A96E'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+/* ============================================================
+   CV MAKER — by Nazu · Design System
+   Aesthetic: Refined Editorial · Luxury Career Platform
+   Palette: Deep Navy + Champagne Gold + Warm White
+   ============================================================ */
+:root {
+  --navy: #0B1426;
+  --navy-2: #162038;
+  --navy-3: #1F2D4A;
+  --navy-4: #2A3D65;
+  --gold: #C8A96E;
+  --gold-2: #E2C98A;
+  --gold-3: #F0DFB0;
+  --gold-dim: #8B7040;
+  --cream: #FAF8F3;
+  --cream-2: #F3EFE5;
+  --cream-3: #E8E1D0;
+  --white: #FFFFFF;
+  --text-dark: #0F1923;
+  --text-mid: #4A5568;
+  --text-light: #8A96A8;
+  --success: #2D7D4F;
+  --success-bg: #EBF7F0;
+  --warning: #B45309;
+  --warning-bg: #FEF3C7;
+  --danger: #B91C1C;
+  --danger-bg: #FEE2E2;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --shadow-sm: 0 2px 8px rgba(11,20,38,0.08);
+  --shadow-md: 0 8px 24px rgba(11,20,38,0.12);
+  --shadow-lg: 0 20px 60px rgba(11,20,38,0.18);
+  --transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.serif { font-family: 'Cormorant Garamond', serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.2; }
+
+/* ============ LANG SWITCHER ============ */
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-sm);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.lang-btn:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+.lang-btn.active { background: rgba(200,169,110,0.15); border-color: rgba(200,169,110,0.3); color: var(--gold-2); }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(11,20,38,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+  height: 68px;
+  display: flex; align-items: center;
+  padding: 0 2rem; gap: 2rem;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo {
+  width: 38px; height: 38px;
+  background: var(--gold); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 700; color: var(--navy);
+}
+.nav-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); letter-spacing: 0.3px; }
+.nav-name em { color: var(--gold); font-style: normal; }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
+.nav-link { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.65); text-decoration: none; padding: 6px 14px; border-radius: var(--r-sm); transition: var(--transition); }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--gold-2); }
+.nav-cta { font-size: 13px; font-weight: 500; background: var(--gold); color: var(--navy); padding: 8px 20px; border-radius: var(--r-sm); text-decoration: none; transition: var(--transition); margin-left: 0.5rem; }
+.nav-cta:hover { background: var(--gold-2); transform: translateY(-1px); }
+.nav-lang-group { display: flex; align-items: center; gap: 4px; margin-left: 0.5rem; }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 100px 2rem 4rem;
+}
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,169,110,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(200,169,110,0.05) 0%, transparent 60%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.hero-content { position: relative; z-index: 2; max-width: 760px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: var(--gold-2); background: rgba(200,169,110,0.12); border: 1px solid rgba(200,169,110,0.2); padding: 6px 16px; border-radius: 100px; margin-bottom: 2rem; letter-spacing: 0.5px; }
+.hero-badge-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-title { font-size: clamp(40px, 7vw, 72px); font-weight: 700; color: var(--white); line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -1px; }
+.hero-title em { font-style: italic; color: var(--gold); display: block; }
+.hero-subtitle { font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto 2.5rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: var(--r-sm); border: none; cursor: pointer; text-decoration: none; transition: var(--transition); white-space: nowrap; }
+.btn-primary:hover { background: var(--gold-2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,169,110,0.3); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; background: transparent; color: rgba(255,255,255,0.8); padding: 14px 32px; border-radius: var(--r-sm); border: 1px solid rgba(255,255,255,0.15); cursor: pointer; text-decoration: none; transition: var(--transition); white-space: nowrap; }
+.btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+.hero-stats { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--gold); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* ============ BUILDER SECTION ============ */
+.section { padding: 5rem 2rem; }
+/* MELEBARKAN AREA BUILDER */
+.section-inner { max-width: 1400px; width: 98%; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.75rem; }
+.section-title { font-size: clamp(28px, 4vw, 42px); color: var(--text-dark); margin-bottom: 1rem; }
+.section-desc { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 560px; font-weight: 300; }
+
+/* ============ BUILDER APP ============ */
+/* MELEBARKAN PREVIEW KE 480PX */
+.builder-wrap { background: var(--white); border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: grid; grid-template-columns: 300px 1fr 480px; min-height: 760px; border: 1px solid var(--cream-3); }
+
+/* LEFT PANEL */
+.builder-left { background: var(--navy); padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+.builder-nav-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(200,169,110,0.5); margin-bottom: 0.75rem; }
+.step-nav { display: flex; flex-direction: column; gap: 4px; }
+.step-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: var(--r-sm); cursor: pointer; transition: var(--transition); border: 1px solid transparent; }
+.step-item:hover { background: rgba(255,255,255,0.04); }
+.step-item.active { background: rgba(200,169,110,0.1); border-color: rgba(200,169,110,0.2); }
+.step-item.done .step-num { background: var(--success); color: var(--white); }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition); }
+.step-item.active .step-num { background: var(--gold); color: var(--navy); }
+.step-label { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.5); transition: var(--transition); }
+.step-item.active .step-label { color: var(--gold-2); font-weight: 500; }
+.step-item.done .step-label { color: rgba(255,255,255,0.6); }
+
+/* AI Input Panel */
+.ai-input-card { background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.15); border-radius: var(--r-md); padding: 1.25rem; }
+.ai-input-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
+.ai-input-label::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+/* Language picker inside AI card */
+.lang-cv-row { display: flex; gap: 6px; margin-bottom: 8px; }
+.lang-cv-btn { flex: 1; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; padding: 6px 4px; border-radius: 6px; border: 1px solid rgba(200,169,110,0.2); background: rgba(11,20,38,0.4); color: rgba(255,255,255,0.5); cursor: pointer; transition: var(--transition); text-align: center; }
+.lang-cv-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+.lang-cv-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold-2); }
+
+.ai-textarea { width: 100%; background: rgba(11,20,38,0.4); border: 1px solid rgba(200,169,110,0.15); border-radius: var(--r-sm); padding: 10px 12px; font-family: 'Outfit', sans-serif; font-size: 12px; color: rgba(255,255,255,0.8); resize: none; min-height: 90px; outline: none; line-height: 1.6; transition: var(--transition); }
+.ai-textarea:focus { border-color: rgba(200,169,110,0.4); }
+.ai-textarea::placeholder { color: rgba(255,255,255,0.25); }
+.ai-send-btn { width: 100%; margin-top: 8px; background: var(--gold); color: var(--navy); border: none; border-radius: var(--r-sm); padding: 10px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: var(--transition); }
+.ai-send-btn:hover { background: var(--gold-2); }
+.ai-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ATS Widget */
+.ats-widget { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--r-md); padding: 1.25rem; }
+.ats-widget-title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+.ats-gauge { position: relative; text-align: center; margin-bottom: 1rem; }
+.ats-score-big { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: var(--gold); line-height: 1; }
+.ats-score-label { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+.ats-bar-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; margin-bottom: 0.5rem; }
+.ats-bar-fill { height: 100%; border-radius: 100px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+.ats-verdict { font-size: 12px; color: rgba(255,255,255,0.4); }
+.ats-verdict strong { color: var(--gold-2); }
+.ats-breakdown { display: flex; flex-direction: column; gap: 8px; margin-top: 0.75rem; }
+.ats-row { display: flex; align-items: center; gap: 8px; }
+.ats-row-label { font-size: 11px; color: rgba(255,255,255,0.4); flex: 1; }
+.ats-row-bar { flex: 2; height: 3px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+.ats-row-fill { height: 100%; background: var(--gold); border-radius: 100px; }
+.ats-row-val { font-size: 11px; color: rgba(255,255,255,0.4); width: 28px; text-align: right; }
+
+/* ============ MIDDLE PANEL — FORM ============ */
+.builder-mid { padding: 2rem; overflow-y: auto; background: var(--cream); display: flex; flex-direction: column; gap: 0; }
+.builder-tabs { display: flex; gap: 4px; margin-bottom: 1.75rem; background: var(--cream-2); padding: 4px; border-radius: var(--r-md); flex-wrap: wrap; }
+.builder-tab { flex: 1; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-light); background: transparent; border: none; padding: 8px 10px; border-radius: 10px; cursor: pointer; transition: var(--transition); white-space: nowrap; text-align: center; }
+.builder-tab:hover { color: var(--text-dark); }
+.builder-tab.active { background: var(--white); color: var(--navy); font-weight: 600; box-shadow: var(--shadow-sm); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeUp 0.25s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Form Elements */
+.form-group { margin-bottom: 1.25rem; }
+.form-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; letter-spacing: 0.3px; }
+.form-label span { color: var(--danger); margin-left: 2px; }
+.form-input, .form-select, .form-textarea { width: 100%; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 400; color: var(--text-dark); background: var(--white); border: 1.5px solid var(--cream-3); border-radius: var(--r-sm); padding: 10px 14px; outline: none; transition: var(--transition); line-height: 1.5; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,169,110,0.1); }
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.form-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+/* Cards for repeated entries */
+.entry-card { background: var(--white); border: 1.5px solid var(--cream-3); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1rem; position: relative; transition: var(--transition); }
+.entry-card:hover { box-shadow: var(--shadow-sm); }
+.entry-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+.entry-card-title { font-size: 14px; font-weight: 600; color: var(--navy); }
+.entry-card-sub { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.entry-remove { width: 28px; height: 28px; border: 1px solid var(--cream-3); background: transparent; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-light); transition: var(--transition); flex-shrink: 0; }
+.entry-remove:hover { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+
+.bullet-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.bullet-row { display: flex; align-items: flex-start; gap: 8px; }
+.bullet-dot { color: var(--gold-dim); font-size: 16px; margin-top: 10px; flex-shrink: 0; }
+.bullet-input { flex: 1; font-family: 'Outfit', sans-serif; font-size: 13px; color: var(--text-dark); background: var(--cream); border: 1px solid var(--cream-3); border-radius: 6px; padding: 8px 10px; outline: none; transition: var(--transition); line-height: 1.5; resize: none; }
+.bullet-input:focus { border-color: var(--gold); background: var(--white); }
+.bullet-remove { background: transparent; border: none; cursor: pointer; color: var(--cream-3); font-size: 16px; padding: 6px; margin-top: 4px; transition: var(--transition); flex-shrink: 0; }
+.bullet-remove:hover { color: var(--danger); }
+
+.ai-expand-btn { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; color: var(--gold-dim); background: rgba(200,169,110,0.08); border: 1px dashed rgba(200,169,110,0.3); border-radius: 6px; padding: 6px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); margin-top: 4px; }
+.ai-expand-btn:hover { background: rgba(200,169,110,0.15); border-color: var(--gold); }
+.ai-expand-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.add-entry-btn { width: 100%; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; color: var(--navy-4); background: transparent; border: 2px dashed var(--cream-3); border-radius: var(--r-md); padding: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); }
+.add-entry-btn:hover { border-color: var(--gold); color: var(--gold-dim); background: rgba(200,169,110,0.04); }
+
+/* Skills */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+.skill-tag { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 400; background: var(--navy); border: 1.5px solid var(--navy); border-radius: 100px; padding: 5px 12px; color: var(--gold-2); transition: var(--transition); }
+.skill-remove { font-size: 14px; opacity: 0.5; cursor: pointer; transition: var(--transition); }
+.skill-remove:hover { opacity: 1; color: var(--gold); }
+.skill-add-row { display: flex; gap: 8px; }
+
+/* JD Analyzer */
+.jd-panel { background: var(--white); border: 1.5px solid var(--cream-3); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.25rem; }
+.jd-textarea { width: 100%; font-family: 'Outfit', sans-serif; font-size: 13px; color: var(--text-dark); border: 1.5px solid var(--cream-3); border-radius: var(--r-sm); padding: 12px; outline: none; resize: vertical; min-height: 150px; transition: var(--transition); line-height: 1.6; }
+.jd-textarea:focus { border-color: var(--gold); }
+.analyze-btn { width: 100%; margin-top: 10px; background: var(--navy); color: var(--gold-2); border: none; border-radius: var(--r-sm); padding: 12px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.analyze-btn:hover { background: var(--navy-2); }
+.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.kw-section { margin-top: 1rem; }
+.kw-group-title { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 6px; }
+.kw-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.kw-tag { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; display: flex; align-items: center; gap: 4px; }
+.kw-tag.found { background: var(--success-bg); color: var(--success); border: 1px solid rgba(45,125,79,0.2); }
+.kw-tag.missing { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(185,28,28,0.2); }
+.kw-tag.neutral { background: var(--cream-2); color: var(--text-mid); border: 1px solid var(--cream-3); }
+
+/* ============ RIGHT PANEL — CV PREVIEW ============ */
+.builder-right { border-left: 1px solid var(--cream-3); background: var(--cream-2); display: flex; flex-direction: column; overflow: hidden; }
+.preview-topbar { background: var(--white); border-bottom: 1px solid var(--cream-3); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.preview-topbar-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+.preview-actions { display: flex; gap: 6px; align-items: center; }
+
+/* THEME SELECTION */
+.template-select { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 8px; border-radius: 6px; border: 1.5px solid var(--cream-3); background: var(--cream); color: var(--text-mid); outline: none; cursor: pointer; }
+
+.preview-btn-sm { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; padding: 6px 12px; border-radius: 6px; border: 1.5px solid var(--cream-3); background: transparent; color: var(--text-mid); cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; }
+.preview-btn-sm:hover { border-color: var(--navy); color: var(--navy); }
+.preview-btn-sm.gold { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+.preview-btn-sm.gold:hover { background: var(--gold-2); }
+
+/* Export modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(11,20,38,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box { background: var(--white); border-radius: var(--r-xl); padding: 2rem; width: 340px; box-shadow: var(--shadow-lg); transform: translateY(16px); transition: transform 0.25s; }
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.modal-sub { font-size: 13px; color: var(--text-mid); margin-bottom: 1.5rem; }
+.export-options { display: flex; flex-direction: column; gap: 10px; }
+.export-opt { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1.5px solid var(--cream-3); border-radius: var(--r-md); cursor: pointer; transition: var(--transition); background: var(--cream); }
+.export-opt:hover { border-color: var(--gold); background: rgba(200,169,110,0.04); }
+.export-opt-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.export-opt-icon.word { background: #EBF3FB; color: #1565C0; }
+.export-opt-icon.pdf { background: #FEE2E2; color: #B91C1C; }
+.export-opt-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.export-opt-desc { font-size: 11px; color: var(--text-light); margin-top: 1px; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; cursor: pointer; color: var(--text-light); font-size: 20px; }
+.modal-box { position: relative; }
+
+/* A4 CV Paper preview */
+.cv-preview-scroll { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; justify-content: center; }
+
+/* SKALA A4 DIPERBESAR AGAR JELAS DIBACA */
+.cv-paper {
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  width: 420px;
+  min-height: 594px;
+  padding: 34px 30px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.cv-paper-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.cv-paper-pos { font-size: 11px; font-weight: 500; color: var(--gold-dim); letter-spacing: 0.5px; margin-bottom: 8px; }
+.cv-paper-contacts { display: flex; flex-wrap: wrap; gap: 8px; font-size: 9.5px; color: var(--text-light); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1.5px solid var(--gold); }
+.cv-section { margin-bottom: 12px; }
+.cv-section-hd { font-size: 8.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid var(--cream-3); }
+.cv-job-hd { display: flex; justify-content: space-between; align-items: baseline; }
+.cv-job-title-text { font-size: 11px; font-weight: 600; color: var(--navy); }
+.cv-job-period { font-size: 9px; color: var(--text-light); white-space: nowrap; }
+.cv-job-co { font-size: 10px; color: var(--gold-dim); margin-bottom: 4px; }
+.cv-bullets { padding-left: 12px; margin-bottom: 8px; }
+.cv-bullets li { margin: 2px 0; font-size: 10px; color: var(--text-mid); }
+.cv-skills-wrap { display: flex; flex-wrap: wrap; gap: 4px; }
+.cv-skill-pill { font-size: 9px; background: var(--cream-2); color: var(--text-mid); border: 1px solid var(--cream-3); border-radius: 4px; padding: 2px 8px; }
+.cv-empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-light); }
+.cv-empty-icon { font-size: 32px; margin-bottom: 1rem; opacity: 0.3; }
+.cv-empty-text { font-size: 12px; line-height: 1.6; }
+
+/* THEME: MINIMALIST (BLACK & WHITE) */
+.cv-paper.theme-bw .cv-paper-name { color: #000; }
+.cv-paper.theme-bw .cv-paper-pos { color: #444; }
+.cv-paper.theme-bw .cv-paper-contacts { border-bottom-color: #000; color: #333; }
+.cv-paper.theme-bw .cv-section-hd { color: #000; border-bottom-color: #000; }
+.cv-paper.theme-bw .cv-job-title-text { color: #000; }
+.cv-paper.theme-bw .cv-job-co { color: #444; }
+.cv-paper.theme-bw .cv-bullets li { color: #222; }
+.cv-paper.theme-bw .cv-skill-pill { border-color: #bbb; background: #fff; color: #000; }
+.cv-paper.theme-bw { color: #000; }
+
+/* Overflow page indicator */
+.cv-page-2-divider { border: none; border-top: 1.5px dashed var(--cream-3); margin: 10px 0 6px; position: relative; }
+.cv-page-2-divider::before { content: attr(data-label); position: absolute; left: 50%; top: -9px; transform: translateX(-50%); background: var(--white); padding: 0 6px; font-size: 6.5px; color: var(--text-light); letter-spacing: 1px; }
+
+/* Suggestions panel */
+.suggestions-panel { background: var(--white); border-top: 1px solid var(--cream-3); padding: 1rem 1.25rem; flex-shrink: 0; }
+.suggestions-title { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.suggestion-item { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: var(--text-mid); padding: 4px 0; border-bottom: 1px solid var(--cream-2); }
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-icon { color: var(--warning); flex-shrink: 0; margin-top: 1px; }
+
+/* ============ FEATURES ============ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.feature-card { background: var(--white); border: 1px solid var(--cream-3); border-radius: var(--r-lg); padding: 2rem; transition: var(--transition); }
+.feature-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.feature-icon { width: 48px; height: 48px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gold); margin-bottom: 1.25rem; }
+.feature-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.feature-desc { font-size: 14px; font-weight: 300; color: var(--text-mid); line-height: 1.65; }
+
+/* ============ HOW IT WORKS ============ */
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; margin-top: 3rem; }
+.how-grid::before { content: ''; position: absolute; top: 32px; left: 16%; right: 16%; height: 1px; background: linear-gradient(90deg, var(--cream-3), var(--gold), var(--cream-3)); }
+.how-step { text-align: center; }
+.how-num { width: 64px; height: 64px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--gold); position: relative; z-index: 1; box-shadow: var(--shadow-md); }
+.how-title { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.how-desc { font-size: 14px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  padding: 3rem 2rem 2rem;
+  font-size: 13px;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.footer-brand-name em { color: var(--gold); font-style: normal; }
+.footer-brand-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 1rem; }
+.footer-col-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(200,169,110,0.5); margin-bottom: 0.75rem; }
+.footer-link { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: var(--transition); }
+.footer-link:hover { color: var(--gold-2); }
+.footer-link svg { flex-shrink: 0; color: var(--gold-dim); }
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.25rem; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-bottom strong { color: var(--gold-dim); }
+
+/* ============ TOAST ============ */
+.toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--navy); color: var(--white); padding: 12px 20px; border-radius: var(--r-sm); font-size: 13px; box-shadow: var(--shadow-lg); z-index: 9999; transform: translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); border-left: 3px solid var(--gold); max-width: 320px; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { border-left-color: #2D7D4F; }
+.toast.error { border-left-color: var(--danger); }
+
+/* ============ SPINNER ============ */
+.spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: currentColor; border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cream-3); border-radius: 100px; }
+
+/* ============ ANIMATIONS ============ */
+.fade-in { animation: fadeIn 0.5s ease both; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+[data-delay="1"] { animation-delay: 0.1s; }
+[data-delay="2"] { animation-delay: 0.2s; }
+[data-delay="3"] { animation-delay: 0.3s; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) { .builder-wrap { grid-template-columns: 260px 1fr 350px; } }
+@media (max-width: 900px) {
+  .builder-wrap { grid-template-columns: 1fr; grid-template-rows: auto; min-height: auto; }
+  .builder-left { display: none; }
+  .builder-right { border-left: none; border-top: 1px solid var(--cream-3); max-height: 540px; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-grid::before { display: none; }
+  .nav-links { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid-3 { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">N</div>
+    <div class="nav-name">CV Maker <em>· by Nazu</em></div>
+  </a>
+  <div class="nav-links">
+    <a href="#builder" class="nav-link active" data-i18n="nav_builder">Builder</a>
+    <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+    <a href="#how" class="nav-link" data-i18n="nav_how">How It Works</a>
+  </div>
+  <div class="nav-lang-group">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('id')">ID</button>
+  </div>
+  <a href="#builder" class="nav-cta" data-i18n="nav_cta">Build CV Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span data-i18n="hero_badge">Powered by Gemini AI · 100% ATS-Compatible</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-i18n="hero_title_1">Precision-Engineered CVs that</span><br>
+      <em data-i18n="hero_title_2">Accelerate Your Career</em>
+    </h1>
+    <p class="hero-subtitle" data-i18n="hero_subtitle">
+      Build AI-powered CVs in minutes. Automatically optimized for Applicant Tracking Systems, written humanely, and tailored to your Job Description.
+    </p>
+    <div class="hero-actions">
+      <a href="#builder" class="btn-primary" data-i18n="hero_cta">Build My CV Now</a>
+      <a href="#how" class="btn-secondary" data-i18n="hero_secondary">See How It Works →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">3x</div>
+        <div class="hero-stat-label" data-i18n="stat_1">Faster than manual</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">95%</div>
+        <div class="hero-stat-label" data-i18n="stat_2">Average ATS score</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label" data-i18n="stat_3">Selectable text</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER SECTION -->
+<section class="section" id="builder">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-label" data-i18n="builder_label">CV Builder</div>
+      <h2 class="section-title" data-i18n="builder_title">Build Your CV Now</h2>
+      <p class="section-desc" style="margin:0 auto;" data-i18n="builder_desc">Fill the form, tell your story, or let AI extract from free-form narration.</p>
+    </div>
+
+    <div class="builder-wrap">
+      <!-- LEFT PANEL -->
+      <div class="builder-left">
+        <div>
+          <div class="builder-nav-title" data-i18n="nav_steps">Navigation</div>
+          <div class="step-nav" id="step-nav">
+            <div class="step-item active" onclick="goTab('identity',0)">
+              <div class="step-num" id="sn-0">1</div>
+              <div class="step-label" data-i18n="step_identity">Identity</div>
+            </div>
+            <div class="step-item" onclick="goTab('summary',1)">
+              <div class="step-num" id="sn-1">2</div>
+              <div class="step-label" data-i18n="step_summary">Professional Summary</div>
+            </div>
+            <div class="step-item" onclick="goTab('experience',2)">
+              <div class="step-num" id="sn-2">3</div>
+              <div class="step-label" data-i18n="step_exp">Work Experience</div>
+            </div>
+            <div class="step-item" onclick="goTab('education',3)">
+              <div class="step-num" id="sn-3">4</div>
+              <div class="step-label" data-i18n="step_edu">Education</div>
+            </div>
+            <div class="step-item" onclick="goTab('skills',4)">
+              <div class="step-num" id="sn-4">5</div>
+              <div class="step-label" data-i18n="step_skills">Skills & Certifications</div>
+            </div>
+            <div class="step-item" onclick="goTab('jd',5)">
+              <div class="step-num" id="sn-5">6</div>
+              <div class="step-label" data-i18n="step_jd">JD Analysis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Assistant -->
+        <div class="ai-input-card">
+          <div class="ai-input-label" data-i18n="ai_assistant">AI Assistant</div>
+          <div style="margin-bottom:6px;">
+            <div style="font-size:10px;color:rgba(200,169,110,0.6);margin-bottom:4px;" data-i18n="cv_lang_label">CV Language:</div>
+            <div class="lang-cv-row">
+              <button class="lang-cv-btn active" onclick="setCVLang('en')" id="cvlang-en">English</button>
+              <button class="lang-cv-btn" onclick="setCVLang('id')" id="cvlang-id">Indonesia</button>
+            </div>
+          </div>
+          <textarea class="ai-textarea" id="ai-textarea" rows="4"></textarea>
+          <button class="ai-send-btn" id="ai-send-btn" onclick="processWithAI()">
+            <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+            <span id="ai-btn-text" data-i18n="ai_btn">Process with AI</span>
+          </button>
+        </div>
+
+        <!-- ATS Widget -->
+        <div class="ats-widget">
+          <div class="ats-widget-title" data-i18n="ats_score">ATS Score</div>
+          <div class="ats-gauge">
+            <div class="ats-score-big" id="ats-big">—</div>
+            <div class="ats-score-label" data-i18n="ats_match">Match Score</div>
+          </div>
+          <div class="ats-bar-track"><div class="ats-bar-fill" id="ats-fill" style="width:0%;background:var(--gold)"></div></div>
+          <div class="ats-verdict" id="ats-verdict" data-i18n="ats_hint">Add Job Description for analysis</div>
+          <div class="ats-breakdown" id="ats-breakdown" style="display:none">
+            <div class="ats-row"><div class="ats-row-label" data-i18n="ats_keywords">Keywords</div><div class="ats-row-bar"><div class="ats-row-fill" id="ab-kw" style="width:0%"></div></div><div class="ats-row-val" id="av-kw">—</div></div>
+            <div class="ats-row"><div class="ats-row-label" data-i18n="ats_exp">Experience</div><div class="ats-row-bar"><div class="ats-row-fill" id="ab-ex" style="width:0%"></div></div><div class="ats-row-val" id="av-ex">—</div></div>
+            <div class="ats-row"><div class="ats-row-label" data-i18n="ats_edu">Education</div><div class="ats-row-bar"><div class="ats-row-fill" id="ab-ed" style="width:0%"></div></div><div class="ats-row-val" id="av-ed">—</div></div>
+            <div class="ats-row"><div class="ats-row-label" data-i18n="ats_skills">Skills</div><div class="ats-row-bar"><div class="ats-row-fill" id="ab-sk" style="width:0%"></div></div><div class="ats-row-val" id="av-sk">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIDDLE: Form Tabs -->
+      <div class="builder-mid">
+        <div class="builder-tabs">
+          <button class="builder-tab active" onclick="switchTab('identity',0)" data-i18n="tab_identity">Identity</button>
+          <button class="builder-tab" onclick="switchTab('summary',1)" data-i18n="tab_summary">Summary</button>
+          <button class="builder-tab" onclick="switchTab('experience',2)" data-i18n="tab_exp">Experience</button>
+          <button class="builder-tab" onclick="switchTab('education',3)" data-i18n="tab_edu">Education</button>
+          <button class="builder-tab" onclick="switchTab('skills',4)" data-i18n="tab_skills">Skills</button>
+          <button class="builder-tab" onclick="switchTab('jd',5)" data-i18n="tab_jd">JD Analysis</button>
+        </div>
+
+        <!-- Tab: Identity -->
+        <div class="tab-panel active" id="tab-identity">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label"><span data-i18n="f_fullname">Full Name</span> <span>*</span></label>
+              <input class="form-input" id="f-name" type="text" placeholder="Budi Santoso" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><span data-i18n="f_position">Target Position</span> <span>*</span></label>
+              <input class="form-input" id="f-position" type="text" placeholder="Software Engineer" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label"><span data-i18n="f_email">Email</span> <span>*</span></label>
+              <input class="form-input" id="f-email" type="email" placeholder="budi@email.com" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="f_phone">Phone / WhatsApp</label>
+              <input class="form-input" id="f-phone" type="text" placeholder="+62 812 3456 7890" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" data-i18n="f_city">City</label>
+              <input class="form-input" id="f-city" type="text" placeholder="Jakarta Selatan" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="f_linkedin">LinkedIn URL</label>
+              <input class="form-input" id="f-linkedin" type="text" placeholder="linkedin.com/in/budi" oninput="updatePreview()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="f_portfolio">Portfolio / Website</label>
+            <input class="form-input" id="f-portfolio" type="text" placeholder="budisantoso.dev" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <!-- Tab: Summary -->
+        <div class="tab-panel" id="tab-summary">
+          <div class="form-group">
+            <label class="form-label"><span data-i18n="f_summary_label">Professional Summary</span> <span>*</span></label>
+            <textarea class="form-textarea" id="f-summary" rows="5" oninput="updatePreview()" style="min-height:120px;"></textarea>
+            <div class="form-hint" data-i18n="f_summary_hint">2-3 sentences describing your expertise, experience, and value proposition.</div>
+          </div>
+          <button class="ai-expand-btn" id="gen-summary-btn" onclick="generateSummary()">
+            <i data-lucide="sparkles" style="width:12px;height:12px;"></i>
+            <span data-i18n="gen_summary">Auto-generate with AI</span>
+          </button>
+        </div>
+
+        <!-- Tab: Experience -->
+        <div class="tab-panel" id="tab-experience">
+          <div id="exp-list"></div>
+          <button class="add-entry-btn" onclick="addExperience()">
+            <i data-lucide="plus" style="width:14px;height:14px;"></i>
+            <span data-i18n="add_exp">Add Work Experience</span>
+          </button>
+        </div>
+
+        <!-- Tab: Education -->
+        <div class="tab-panel" id="tab-education">
+          <div id="edu-list"></div>
+          <button class="add-entry-btn" onclick="addEducation()">
+            <i data-lucide="plus" style="width:14px;height:14px;"></i>
+            <span data-i18n="add_edu">Add Education</span>
+          </button>
+        </div>
+
+        <!-- Tab: Skills -->
+        <div class="tab-panel" id="tab-skills">
+          <div class="form-group">
+            <label class="form-label" data-i18n="f_skills">Skills</label>
+            <div class="skills-grid" id="skills-grid"></div>
+            <div class="skill-add-row">
+              <input class="form-input" id="skill-input" onkeydown="if(event.key==='Enter'){addSkill();event.preventDefault()}">
+              <button class="btn-primary" style="padding:10px 20px;white-space:nowrap;font-size:13px;" onclick="addSkill()" data-i18n="add_btn">Add</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:2rem;">
+            <label class="form-label" data-i18n="f_certs">Certifications & Training</label>
+            <div id="cert-list"></div>
+            <button class="add-entry-btn" onclick="addCert()">
+              <i data-lucide="plus" style="width:14px;height:14px;"></i>
+              <span data-i18n="add_cert">Add Certification</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab: JD Analyzer -->
+        <div class="tab-panel" id="tab-jd">
+          <div class="jd-panel">
+            <label class="form-label" data-i18n="jd_paste">Paste Job Description</label>
+            <textarea class="jd-textarea" id="jd-textarea"></textarea>
+            <button class="analyze-btn" id="analyze-btn" onclick="analyzeJD()">
+              <i data-lucide="scan-search" style="width:16px;height:16px;"></i>
+              <span id="analyze-btn-text" data-i18n="jd_analyze">Analyze CV Match</span>
+            </button>
+          </div>
+          <div id="kw-results" style="display:none;">
+            <div class="form-group">
+              <label class="form-label" style="color:var(--success);display:flex;align-items:center;gap:6px;"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> <span data-i18n="kw_found">Keywords Already in CV</span></label>
+              <div class="kw-tags" id="kw-found"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="color:var(--danger);display:flex;align-items:center;gap:6px;"><i data-lucide="x-circle" style="width:14px;height:14px;"></i> <span data-i18n="kw_missing">Missing Keywords — Add These</span></label>
+              <div class="kw-tags" id="kw-missing"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="kw_reco">Improvement Recommendations</label>
+              <div id="reco-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CV Preview -->
+      <div class="builder-right">
+        <div class="preview-topbar">
+          <div class="preview-topbar-title" data-i18n="preview_title">CV Preview (A4)</div>
+          <div class="preview-actions" style="align-items:center;">
+            <select id="cv-theme" class="template-select" onchange="updatePreview()">
+              <option value="default" data-i18n="theme_default">Default (Gold & Navy)</option>
+              <option value="bw" data-i18n="theme_bw">Minimalist (Black & White)</option>
+            </select>
+            <button class="preview-btn-sm" onclick="copyPlainText()">
+              <i data-lucide="copy" style="width:12px;height:12px;"></i>
+              <span data-i18n="copy_btn">Copy Text</span>
+            </button>
+            <button class="preview-btn-sm gold" onclick="openExportModal()">
+              <i data-lucide="download" style="width:12px;height:12px;"></i>
+              <span data-i18n="export_btn">Export</span>
+            </button>
+          </div>
+        </div>
+        <div class="cv-preview-scroll">
+          <div class="cv-paper" id="cv-paper">
+            <div class="cv-empty-state">
+              <div class="cv-empty-icon">◈</div>
+              <div class="cv-empty-text" data-i18n="preview_empty">Your CV preview will appear here.<br><br>Fill the form or use AI Assistant.</div>
+            </div>
+          </div>
+        </div>
+        <div class="suggestions-panel" id="suggestions-panel" style="display:none;">
+          <div class="suggestions-title" style="display:flex;align-items:center;gap:6px;">
+            <i data-lucide="lightbulb" style="width:14px;height:14px;color:var(--warning);"></i>
+            <span data-i18n="ai_suggestions">AI Suggestions</span>
+          </div>
+          <div id="suggestions-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features" style="background:var(--white);">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label" data-i18n="feat_label">Advantages</div>
+      <h2 class="section-title" data-i18n="feat_title">Why Choose CV Maker by Nazu?</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon"><i data-lucide="target" style="width:22px;height:22px;"></i></div>
+        <div class="feature-title" data-i18n="feat1_title">ATS-Optimized</div>
+        <div class="feature-desc" data-i18n="feat1_desc">CV formatted to ATS standards — selectable text, standard headers, no graphics that confuse ATS parsers.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="1">
+        <div class="feature-icon"><i data-lucide="sparkles" style="width:22px;height:22px;"></i></div>
+        <div class="feature-title" data-i18n="feat2_title">AI-Powered</div>
+        <div class="feature-desc" data-i18n="feat2_desc">Gemini AI extracts data from free narration, expands descriptions with action verbs, and optimizes keywords automatically.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="2">
+        <div class="feature-icon"><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i></div>
+        <div class="feature-title" data-i18n="feat3_title">JD Analysis</div>
+        <div class="feature-desc" data-i18n="feat3_desc">Paste a Job Description and get a match score, missing keywords, and specific recommendations to improve your chances.</div>
+      </div>
+      <div class="feature-card fade-in" data-delay="3">
+        <div class="feature-icon"><i data-lucide="zap" style="width:22px;height:22px;"></i></div>
+        <div class="feature-title" data-i18n="feat4_title">Fast & Easy</div>
+        <div class="feature-desc" data-i18n="feat4_desc">Done in minutes. Just tell your experience freely — AI will structure and optimize it for you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label" data-i18n="how_label">Workflow</div>
+      <h2 class="section-title" data-i18n="how_title">3 Steps to a Perfect CV</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-title" data-i18n="how1_title">Parser</div>
+        <div class="how-desc" data-i18n="how1_desc">AI extracts and structures information from your input — free narration, old CV, or structured form.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-title" data-i18n="how2_title">Humanizer</div>
+        <div class="how-desc" data-i18n="how2_desc">Each point is expanded into professional descriptions with strong action verbs and measurable results.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-title" data-i18n="how3_title">ATS Auditor</div>
+        <div class="how-desc" data-i18n="how3_desc">CV is optimized for ATS engines, analyzed against the Job Description, and given an accurate match score.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CV Maker <em>· by Nazu</em></div>
+        <div class="footer-brand-desc" data-i18n="footer_desc">Professional AI-powered CV builder.<br>ATS-optimized. Bilingual. Free.</div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_contact">Contact</div>
+        <a href="tel:+6589580854830" class="footer-link">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i>
+          +65 895 8085 48030
+        </a>
+        <a href="mailto:nazwaumbara@gmail.com" class="footer-link">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i>
+          nazwaumbara@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/nazwaumbara" target="_blank" class="footer-link">
+          <i data-lucide="linkedin" style="width:14px;height:14px;"></i>
+          linkedin.com/in/nazwaumbara
+        </a>
+        <a href="https://instagram.com/nazwaumbara" target="_blank" class="footer-link">
+          <i data-lucide="instagram" style="width:14px;height:14px;"></i>
+          @nazwaumbara
+        </a>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_address">Address</div>
+        <div class="footer-link" style="cursor:default;">
+          <i data-lucide="map-pin" style="width:14px;height:14px;"></i>
+          Syahfrizka Dyah Nazwa Umbara
+        </div>
+        <div class="footer-link" style="cursor:default;padding-left:22px;">
+          Mojoagung, Jombang
+        </div>
+        <div class="footer-link" style="cursor:default;padding-left:22px;">
+          Jawa Timur, Indonesia
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2025 <strong>CV Maker · by Nazu</strong>. All rights reserved.</span>
+      <span data-i18n="footer_powered">Powered by Gemini AI</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeExportModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeExportModal()">
+      <i data-lucide="x" style="width:18px;height:18px;"></i>
+    </button>
+    <div class="modal-title" data-i18n="export_title">Export CV</div>
+    <div class="modal-sub" data-i18n="export_sub">Choose your preferred format</div>
+    <div class="export-options">
+      <div class="export-opt" onclick="exportCV('word')">
+        <div class="export-opt-icon word">
+          <i data-lucide="file-text" style="width:20px;height:20px;"></i>
+        </div>
+        <div>
+          <div class="export-opt-name">Word (.docx)</div>
+          <div class="export-opt-desc" data-i18n="export_word_desc">Editable · ATS-friendly plain text</div>
+        </div>
+      </div>
+      <div class="export-opt" onclick="exportCV('pdf')">
+        <div class="export-opt-icon pdf">
+          <i data-lucide="file" style="width:20px;height:20px;"></i>
+        </div>
+        <div>
+          <div class="export-opt-name">PDF (.pdf)</div>
+          <div class="export-opt-desc" data-i18n="export_pdf_desc">Print-ready · A4 format</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+const API_BASE = '/api';
+
+// ── i18n ───────────────────────────────────────────────────────────
+let currentLang = 'en';
+let currentCVLang = 'en'; // language for AI-generated CV content
+
+const T = {
+  en: {
+    nav_builder: 'Builder', nav_features: 'Features', nav_how: 'How It Works', nav_cta: 'Build CV Free',
+    hero_badge: 'Powered by Gemini AI · 100% ATS-Compatible',
+    hero_title_1: 'Precision-Engineered CVs that', hero_title_2: 'Accelerate Your Career',
+    theme_default: 'Default (Gold & Navy)', theme_bw: 'Minimalist (Black & White)',
+    hero_subtitle: 'Build AI-powered CVs in minutes. Automatically optimized for Applicant Tracking Systems, written humanely, and tailored to your Job Description.',
+    hero_cta: 'Build My CV Now', hero_secondary: 'See How It Works →',
+    stat_1: 'Faster than manual', stat_2: 'Average ATS score', stat_3: 'Selectable text',
+    builder_label: 'CV Builder', builder_title: 'Build Your CV Now',
+    builder_desc: 'Fill the form, tell your story, or let AI extract from free-form narration.',
+    nav_steps: 'Navigation',
+    step_identity: 'Identity', step_summary: 'Professional Summary', step_exp: 'Work Experience',
+    step_edu: 'Education', step_skills: 'Skills & Certifications', step_jd: 'JD Analysis',
+    cv_lang_label: 'CV Language:', ai_assistant: 'AI Assistant',
+    ai_btn: 'Process with AI', ai_placeholder: 'Tell your experience freely or paste your old CV here. AI will auto-fill the form...',
+    ats_score: 'ATS Score', ats_match: 'Match Score', ats_hint: 'Add Job Description for analysis',
+    ats_keywords: 'Keywords', ats_exp: 'Experience', ats_edu: 'Education', ats_skills: 'Skills',
+    tab_identity: 'Identity', tab_summary: 'Summary', tab_exp: 'Experience',
+    tab_edu: 'Education', tab_skills: 'Skills', tab_jd: 'JD Analysis',
+    f_fullname: 'Full Name', f_position: 'Target Position', f_email: 'Email',
+    f_phone: 'Phone / WhatsApp', f_city: 'City', f_linkedin: 'LinkedIn URL', f_portfolio: 'Portfolio / Website',
+    f_summary_label: 'Professional Summary',
+    f_summary_hint: '2-3 sentences describing your expertise, experience, and value proposition.',
+    f_summary_ph: 'Technology professional with 5+ years of experience in large-scale web app development...',
+    gen_summary: 'Auto-generate with AI',
+    add_exp: 'Add Work Experience', add_edu: 'Add Education',
+    f_skills: 'Skills', skill_ph: 'Add skill (e.g. Python, Figma, Leadership)...',
+    add_btn: 'Add', f_certs: 'Certifications & Training', add_cert: 'Add Certification',
+    jd_paste: 'Paste Job Description', jd_ph: 'Paste the Job Description from the role you are targeting here...\n\nExample:\nWe are looking for a Software Engineer with minimum 3 years of experience...',
+    jd_analyze: 'Analyze CV Match',
+    kw_found: 'Keywords Already in CV', kw_missing: 'Missing Keywords — Add These',
+    kw_reco: 'Improvement Recommendations',
+    preview_title: 'CV Preview (A4)', copy_btn: 'Copy Text', export_btn: 'Export',
+    preview_empty: 'Your CV preview will appear here.\n\nFill the form or use AI Assistant.',
+    ai_suggestions: 'AI Suggestions',
+    feat_label: 'Advantages', feat_title: 'Why Choose CV Maker by Nazu?',
+    feat1_title: 'ATS-Optimized', feat1_desc: 'CV formatted to ATS standards — selectable text, standard headers, no graphics that confuse ATS parsers.',
+    feat2_title: 'AI-Powered', feat2_desc: 'Gemini AI extracts data from free narration, expands descriptions, and optimizes keywords automatically.',
+    feat3_title: 'JD Analysis', feat3_desc: 'Paste a Job Description and get a match score, missing keywords, and specific recommendations.',
+    feat4_title: 'Fast & Easy', feat4_desc: 'Done in minutes. Just tell your experience freely — AI will structure and optimize it for you.',
+    how_label: 'Workflow', how_title: '3 Steps to a Perfect CV',
+    how1_title: 'Parser', how1_desc: 'AI extracts and structures information from your input — free narration, old CV, or structured form.',
+    how2_title: 'Humanizer', how2_desc: 'Each point is expanded into professional descriptions with strong action verbs and measurable results.',
+    how3_title: 'ATS Auditor', how3_desc: 'CV is optimized for ATS engines, analyzed against the Job Description, and given an accurate match score.',
+    footer_desc: 'Professional AI-powered CV builder.\nATS-optimized. Bilingual. Free.',
+    footer_contact: 'Contact', footer_address: 'Creator',
+    footer_powered: 'Powered by Gemini AI',
+    export_title: 'Export CV', export_sub: 'Choose your preferred format',
+    export_word_desc: 'Editable · ATS-friendly plain text',
+    export_pdf_desc: 'Print-ready · A4 format',
+    exp_card: 'Work Experience', edu_card: 'Education', cert_card: 'Certification',
+    f_position_lbl: 'Position / Title', f_company: 'Company Name', f_period: 'Period',
+    f_achievements: 'Description & Achievements', add_bullet: '+ Add Point',
+    ai_expand: 'AI Expand Description',
+    f_degree: 'Degree', f_major: 'Major / Field of Study', f_institution: 'Institution', f_year: 'Graduation Year', f_gpa: 'GPA (optional)',
+    f_cert_name: 'Certification Name', f_cert_issuer: 'Issuing Organization', f_cert_year: 'Year',
+    toast_empty_ai: 'Please enter text first.', toast_ai_error: 'Backend connection failed. Make sure Python server is running at localhost:8000',
+    toast_ai_success: 'CV filled successfully!',
+    toast_expand_error: 'Fill position and description first.',
+    toast_expand_ok: 'Description expanded by AI!',
+    toast_expand_fail: 'Failed to connect to AI.',
+    toast_summary_ok: 'Professional summary generated!',
+    toast_summary_fail: 'Failed to generate summary.',
+    toast_copy_ok: 'CV copied to clipboard!',
+    toast_cv_empty: 'CV is empty!',
+    toast_export_ok: 'CV exported successfully!',
+    toast_jd_empty: 'Paste Job Description first.',
+    toast_jd_fail: 'Analysis failed. Check backend connection.',
+    lulus: 'Graduated', ipk: 'GPA',
+    processing: 'Processing...', analyzing: 'Analyzing...', generating: 'Generating...',
+    writing: 'AI is writing...',
+    cv_lang_en: 'English', cv_lang_id: 'Indonesia',
+  },
+  id: {
+    nav_builder: 'Builder', nav_features: 'Fitur', nav_how: 'Cara Kerja', nav_cta: 'Buat CV Gratis',
+    hero_badge: 'Didukung Gemini AI · 100% ATS-Compatible',
+    hero_title_1: 'CV Profesional Presisi Tinggi yang', hero_title_2: 'Mengakselerasi Karir Anda',
+    theme_default: 'Default (Emas & Biru Tua)', theme_bw: 'Minimalis (Hitam Putih)',
+    hero_subtitle: 'Buat CV berbasis AI dalam hitungan menit. Otomatis dioptimasi untuk Applicant Tracking System, ditulis secara humanis, dan disesuaikan dengan Job Description Anda.',
+    hero_cta: 'Buat CV Sekarang', hero_secondary: 'Lihat Cara Kerja →',
+    stat_1: 'Lebih cepat dari manual', stat_2: 'Skor ATS rata-rata', stat_3: 'Teks selectable',
+    builder_label: 'CV Builder', builder_title: 'Bangun CV Anda Sekarang',
+    builder_desc: 'Isi form, ceritakan pengalaman Anda, atau biarkan AI yang mengekstrak dari narasi bebas Anda.',
+    nav_steps: 'Navigasi',
+    step_identity: 'Identitas', step_summary: 'Ringkasan Profesional', step_exp: 'Pengalaman Kerja',
+    step_edu: 'Pendidikan', step_skills: 'Skill & Sertifikasi', step_jd: 'Analisis JD',
+    cv_lang_label: 'Bahasa CV:', ai_assistant: 'AI Assistant',
+    ai_btn: 'Proses dengan AI', ai_placeholder: 'Ceritakan pengalaman Anda secara bebas atau paste CV lama di sini. AI akan otomatis mengisi form...',
+    ats_score: 'ATS Score', ats_match: 'Skor Kecocokan', ats_hint: 'Tambahkan Job Description untuk analisis',
+    ats_keywords: 'Keywords', ats_exp: 'Pengalaman', ats_edu: 'Pendidikan', ats_skills: 'Skills',
+    tab_identity: 'Identitas', tab_summary: 'Ringkasan', tab_exp: 'Pengalaman',
+    tab_edu: 'Pendidikan', tab_skills: 'Skill', tab_jd: 'Analisis JD',
+    f_fullname: 'Nama Lengkap', f_position: 'Posisi Target', f_email: 'Email',
+    f_phone: 'No. HP / WhatsApp', f_city: 'Kota Domisili', f_linkedin: 'LinkedIn URL', f_portfolio: 'Portfolio / Website',
+    f_summary_label: 'Professional Summary',
+    f_summary_hint: '2-3 kalimat yang menggambarkan keahlian, pengalaman, dan nilai yang Anda tawarkan.',
+    f_summary_ph: 'Profesional di bidang teknologi dengan 5+ tahun pengalaman dalam pengembangan aplikasi web...',
+    gen_summary: 'Generate otomatis dengan AI',
+    add_exp: 'Tambah Pengalaman Kerja', add_edu: 'Tambah Pendidikan',
+    f_skills: 'Skills', skill_ph: 'Tambah skill (contoh: Python, Figma, Leadership)...',
+    add_btn: 'Tambah', f_certs: 'Sertifikasi & Pelatihan', add_cert: 'Tambah Sertifikasi',
+    jd_paste: 'Paste Job Description', jd_ph: 'Tempel Job Description dari lowongan yang Anda incar di sini...\n\nContoh:\nKami mencari Software Engineer dengan pengalaman minimal 3 tahun...',
+    jd_analyze: 'Analisis Kecocokan CV',
+    kw_found: 'Keyword Sudah Ada di CV', kw_missing: 'Keyword Belum Ada — Perlu Ditambahkan',
+    kw_reco: 'Rekomendasi Perbaikan',
+    preview_title: 'Preview CV (A4)', copy_btn: 'Salin Teks', export_btn: 'Export',
+    preview_empty: 'Preview CV Anda akan muncul di sini.\n\nMulai isi form atau gunakan AI Assistant.',
+    ai_suggestions: 'Saran AI',
+    feat_label: 'Keunggulan', feat_title: 'Mengapa Memilih CV Maker by Nazu?',
+    feat1_title: 'ATS-Optimized', feat1_desc: 'CV diformat sesuai standar ATS — teks selectable, header standar, tanpa grafik yang membingungkan mesin ATS.',
+    feat2_title: 'AI-Powered', feat2_desc: 'Gemini AI mengekstrak data dari narasi bebas, mengembangkan deskripsi, dan mengoptimasi keyword secara otomatis.',
+    feat3_title: 'Analisis JD', feat3_desc: 'Upload Job Description dan dapatkan skor kecocokan, daftar keyword yang kurang, dan rekomendasi spesifik.',
+    feat4_title: 'Cepat & Mudah', feat4_desc: 'Selesai dalam hitungan menit. Cukup ceritakan pengalaman Anda — AI yang akan mengstrukturisasi dan mengoptimasi.',
+    how_label: 'Alur Kerja', how_title: '3 Tahap Menuju CV Sempurna',
+    how1_title: 'Parser', how1_desc: 'AI mengekstrak dan menstrukturisasi informasi dari input Anda — narasi bebas, CV lama, atau form terstruktur.',
+    how2_title: 'Humanizer', how2_desc: 'Setiap poin dikembangkan menjadi deskripsi profesional dengan action verbs dan hasil terukur.',
+    how3_title: 'ATS Auditor', how3_desc: 'CV dioptimasi untuk mesin ATS, dianalisis terhadap Job Description, dan diberikan skor kecocokan akurat.',
+    footer_desc: 'CV builder profesional berbasis AI.\nATS-optimized. Bilingual. Gratis.',
+    footer_contact: 'Kontak', footer_address: 'Pembuat',
+    footer_powered: 'Didukung oleh Gemini AI',
+    export_title: 'Export CV', export_sub: 'Pilih format yang Anda inginkan',
+    export_word_desc: 'Dapat diedit · Teks ATS-friendly',
+    export_pdf_desc: 'Siap cetak · Format A4',
+    exp_card: 'Pengalaman Kerja', edu_card: 'Pendidikan', cert_card: 'Sertifikasi',
+    f_position_lbl: 'Posisi / Jabatan', f_company: 'Nama Perusahaan', f_period: 'Periode',
+    f_achievements: 'Deskripsi & Pencapaian', add_bullet: '+ Tambah Poin',
+    ai_expand: 'AI Kembangkan Deskripsi',
+    f_degree: 'Gelar', f_major: 'Jurusan / Program Studi', f_institution: 'Nama Institusi', f_year: 'Tahun Lulus', f_gpa: 'IPK (opsional)',
+    f_cert_name: 'Nama Sertifikasi', f_cert_issuer: 'Lembaga Penerbit', f_cert_year: 'Tahun',
+    toast_empty_ai: 'Masukkan teks terlebih dahulu.',
+    toast_ai_error: 'Koneksi ke backend gagal. Pastikan server Python berjalan di localhost:8000',
+    toast_ai_success: 'CV berhasil diisi!',
+    toast_expand_error: 'Isi posisi dan deskripsi singkat terlebih dahulu.',
+    toast_expand_ok: 'Deskripsi berhasil dikembangkan oleh AI!',
+    toast_expand_fail: 'Gagal menghubungi AI.',
+    toast_summary_ok: 'Summary profesional berhasil dibuat!',
+    toast_summary_fail: 'Gagal generate summary.',
+    toast_copy_ok: 'CV berhasil disalin ke clipboard!',
+    toast_cv_empty: 'CV masih kosong!',
+    toast_export_ok: 'CV berhasil diekspor!',
+    toast_jd_empty: 'Paste Job Description terlebih dahulu.',
+    toast_jd_fail: 'Gagal menganalisis. Cek koneksi backend.',
+    lulus: 'Lulus', ipk: 'IPK',
+    processing: 'Memproses...', analyzing: 'Menganalisis...', generating: 'Generating...',
+    writing: 'AI sedang menulis...',
+    cv_lang_en: 'English', cv_lang_id: 'Indonesia',
+  }
+};
+
+function t(key) { return T[currentLang][key] || T['en'][key] || key; }
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[lang][key]) el.textContent = T[lang][key];
+  });
+  // Update placeholders
+  updatePlaceholders();
+  // Refresh dynamic content labels
+  document.getElementById('ai-textarea').placeholder = t('ai_placeholder');
+  document.getElementById('f-summary').placeholder = t('f_summary_ph');
+  document.getElementById('skill-input').placeholder = t('skill_ph');
+  document.getElementById('jd-textarea').placeholder = t('jd_ph');
+}
+
+function setCVLang(lang) {
+  currentCVLang = lang;
+  document.getElementById('cvlang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('cvlang-id').classList.toggle('active', lang === 'id');
+}
+
+function updatePlaceholders() {
+  const aiTa = document.getElementById('ai-textarea');
+  if (aiTa) aiTa.placeholder = t('ai_placeholder');
+  const sumTa = document.getElementById('f-summary');
+  if (sumTa) sumTa.placeholder = t('f_summary_ph');
+  const skillIn = document.getElementById('skill-input');
+  if (skillIn) skillIn.placeholder = t('skill_ph');
+  const jdTa = document.getElementById('jd-textarea');
+  if (jdTa) jdTa.placeholder = t('jd_ph');
+}
+
+// ── State ──────────────────────────────────────────────────────────
+let cvState = {
+  name:'', target_position:'', email:'', phone:'', city:'', linkedin:'', portfolio:'',
+  professional_summary:'', work_experience:[], education:[], skills:[], certifications:[]
+};
+let expCount=0, eduCount=0, certCount=0;
+let conversationHistory = [];
+
+// ── Tab Navigation ──────────────────────────────────────────────────
+function switchTab(id, idx) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.builder-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.builder-tab')[idx].classList.add('active');
+  document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.step-item')[idx].classList.add('active');
+}
+function goTab(id, idx) { switchTab(id, idx); }
+
+// ── Work Experience ────────────────────────────────────────────────
+function addExperience(data={}) {
+  const id = expCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'exp-' + id;
+  div.innerHTML = `
+    <div class="entry-card-header">
+      <div>
+        <div class="entry-card-title">${t('exp_card')} ${id+1}</div>
+        <div class="entry-card-sub" id="exp-sub-${id}">${t('f_position_lbl')}</div>
+      </div>
+      <button class="entry-remove" onclick="removeExp(${id})">
+        <i data-lucide="x" style="width:14px;height:14px;"></i>
+      </button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">${t('f_position_lbl')} <span>*</span></label>
+        <input class="form-input" id="ep-${id}" value="${esc(data.position||'')}" placeholder="Software Engineer" oninput="updateExpSub(${id});updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">${t('f_company')} <span>*</span></label>
+        <input class="form-input" id="ec-${id}" value="${esc(data.company||'')}" placeholder="PT Maju Bersama" oninput="updateExpSub(${id});updatePreview()">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">${t('f_period')}</label>
+      <input class="form-input" id="ed-${id}" value="${esc(data.period||'')}" placeholder="Jan 2022 – Dec 2023" oninput="updatePreview()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">${t('f_achievements')}</label>
+      <div class="bullet-list" id="bullets-${id}"></div>
+      <button class="add-entry-btn" style="padding:8px;font-size:12px;margin-top:4px;" onclick="addBullet(${id})">${t('add_bullet')}</button>
+    </div>
+    <button class="ai-expand-btn" id="ai-exp-btn-${id}" onclick="expandDescription(${id})">
+      <i data-lucide="sparkles" style="width:12px;height:12px;"></i>
+      <span>${t('ai_expand')}</span>
+    </button>`;
+  document.getElementById('exp-list').appendChild(div);
+  const bullets = data.achievements || [];
+  if (bullets.length > 0) { bullets.forEach(b => addBullet(id, b)); }
+  else { addBullet(id); }
+  lucide.createIcons();
+}
+function updateExpSub(id) {
+  const pos = document.getElementById('ep-'+id)?.value;
+  const co = document.getElementById('ec-'+id)?.value;
+  const sub = document.getElementById('exp-sub-'+id);
+  if (sub && (pos||co)) sub.textContent = [pos,co].filter(Boolean).join(' — ');
+}
+function removeExp(id) { document.getElementById('exp-'+id)?.remove(); updatePreview(); }
+function addBullet(expId, text='') {
+  const container = document.getElementById('bullets-'+expId);
+  if (!container) return;
+  const row = document.createElement('div');
+  row.className = 'bullet-row';
+  row.innerHTML = `
+    <div class="bullet-dot">•</div>
+    <textarea class="bullet-input" rows="2" placeholder="Led development of feature X that improved conversion by 20%..." oninput="updatePreview()">${esc(text)}</textarea>
+    <button class="bullet-remove" onclick="this.parentElement.remove();updatePreview()">
+      <i data-lucide="x" style="width:12px;height:12px;"></i>
+    </button>`;
+  container.appendChild(row);
+  lucide.createIcons();
+}
+
+// ── Education ──────────────────────────────────────────────────────
+function addEducation(data={}) {
+  const id = eduCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'edu-' + id;
+  div.innerHTML = `
+    <div class="entry-card-header">
+      <div><div class="entry-card-title">${t('edu_card')} ${id+1}</div></div>
+      <button class="entry-remove" onclick="document.getElementById('edu-${id}').remove();updatePreview()">
+        <i data-lucide="x" style="width:14px;height:14px;"></i>
+      </button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">${t('f_degree')}</label>
+        <input class="form-input" id="edg-${id}" value="${esc(data.degree||'')}" placeholder="S1 / Bachelor" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">${t('f_major')}</label>
+        <input class="form-input" id="edm-${id}" value="${esc(data.major||'')}" placeholder="Computer Science" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">${t('f_institution')} <span>*</span></label>
+        <input class="form-input" id="edi-${id}" value="${esc(data.institution||'')}" placeholder="Universitas Indonesia" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">${t('f_year')}</label>
+        <input class="form-input" id="edy-${id}" value="${esc(data.year||'')}" placeholder="2020" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-group" style="max-width:160px;">
+      <label class="form-label">${t('f_gpa')}</label>
+      <input class="form-input" id="edgpa-${id}" value="${esc(data.gpa||'')}" placeholder="3.75" oninput="updatePreview()">
+    </div>`;
+  document.getElementById('edu-list').appendChild(div);
+  lucide.createIcons();
+}
+
+// ── Skills ─────────────────────────────────────────────────────────
+function addSkill() {
+  const input = document.getElementById('skill-input');
+  const val = input.value.trim();
+  if (!val) return;
+  val.split(',').forEach(s => {
+    const skill = s.trim();
+    if (!skill || cvState.skills.includes(skill)) return;
+    cvState.skills.push(skill);
+  });
+  input.value = '';
+  renderSkills();
+  updatePreview();
+}
+function removeSkill(s) { cvState.skills = cvState.skills.filter(x=>x!==s); renderSkills(); updatePreview(); }
+function renderSkills() {
+  const grid = document.getElementById('skills-grid');
+  grid.innerHTML = cvState.skills.map(s => `
+    <div class="skill-tag">
+      ${esc(s)}
+      <span class="skill-remove" onclick="removeSkill('${s.replace(/'/g,"\\'")}')">×</span>
+    </div>`).join('');
+}
+
+// ── Certifications ─────────────────────────────────────────────────
+function addCert(data={}) {
+  const id = certCount++;
+  const div = document.createElement('div');
+  div.className = 'entry-card fade-in';
+  div.id = 'cert-' + id;
+  div.style.padding = '1rem';
+  div.innerHTML = `
+    <div class="entry-card-header" style="margin-bottom:0.75rem;">
+      <div class="entry-card-title" style="font-size:13px;">${t('cert_card')} ${id+1}</div>
+      <button class="entry-remove" onclick="document.getElementById('cert-${id}').remove();updatePreview()">
+        <i data-lucide="x" style="width:14px;height:14px;"></i>
+      </button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group" style="margin:0;">
+        <input class="form-input" id="cn-${id}" value="${esc(data.name||'')}" placeholder="${t('f_cert_name')}" oninput="updatePreview()">
+      </div>
+      <div class="form-group" style="margin:0;">
+        <input class="form-input" id="ci-${id}" value="${esc(data.issuer||'')}" placeholder="${t('f_cert_issuer')}" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:8px;max-width:120px;">
+      <input class="form-input" id="cy-${id}" value="${esc(data.year||'')}" placeholder="${t('f_cert_year')}" oninput="updatePreview()">
+    </div>`;
+  document.getElementById('cert-list').appendChild(div);
+  lucide.createIcons();
+}
+
+// ── Collect Form Data ──────────────────────────────────────────────
+function collectFormData() {
+  cvState.name = document.getElementById('f-name')?.value || '';
+  cvState.target_position = document.getElementById('f-position')?.value || '';
+  cvState.email = document.getElementById('f-email')?.value || '';
+  cvState.phone = document.getElementById('f-phone')?.value || '';
+  cvState.city = document.getElementById('f-city')?.value || '';
+  cvState.linkedin = document.getElementById('f-linkedin')?.value || '';
+  cvState.portfolio = document.getElementById('f-portfolio')?.value || '';
+  cvState.professional_summary = document.getElementById('f-summary')?.value || '';
+
+  cvState.work_experience = [];
+  for (let i=0;i<expCount;i++) {
+    if (!document.getElementById('exp-'+i)) continue;
+    const achievements = Array.from(document.querySelectorAll(`#bullets-${i} .bullet-input`))
+      .map(t=>t.value.trim()).filter(Boolean);
+    cvState.work_experience.push({
+      position: document.getElementById('ep-'+i)?.value||'',
+      company: document.getElementById('ec-'+i)?.value||'',
+      period: document.getElementById('ed-'+i)?.value||'',
+      achievements
+    });
+  }
+  cvState.education = [];
+  for (let i=0;i<eduCount;i++) {
+    if (!document.getElementById('edu-'+i)) continue;
+    cvState.education.push({
+      degree: document.getElementById('edg-'+i)?.value||'',
+      major: document.getElementById('edm-'+i)?.value||'',
+      institution: document.getElementById('edi-'+i)?.value||'',
+      year: document.getElementById('edy-'+i)?.value||'',
+      gpa: document.getElementById('edgpa-'+i)?.value||''
+    });
+  }
+  cvState.certifications = [];
+  for (let i=0;i<certCount;i++) {
+    if (!document.getElementById('cert-'+i)) continue;
+    cvState.certifications.push({
+      name: document.getElementById('cn-'+i)?.value||'',
+      issuer: document.getElementById('ci-'+i)?.value||'',
+      year: document.getElementById('cy-'+i)?.value||''
+    });
+  }
+  return cvState;
+}
+
+// ── Fill Form From AI Data ─────────────────────────────────────────
+function fillFormFromData(data) {
+  if (!data) return;
+  if (data.name) document.getElementById('f-name').value = data.name;
+  if (data.target_position) document.getElementById('f-position').value = data.target_position;
+  if (data.email) document.getElementById('f-email').value = data.email;
+  if (data.phone) document.getElementById('f-phone').value = data.phone;
+  if (data.city) document.getElementById('f-city').value = data.city;
+  if (data.linkedin) document.getElementById('f-linkedin').value = data.linkedin;
+  if (data.portfolio) document.getElementById('f-portfolio').value = data.portfolio;
+  if (data.professional_summary) document.getElementById('f-summary').value = data.professional_summary;
+  if (data.work_experience?.length) { document.getElementById('exp-list').innerHTML=''; expCount=0; data.work_experience.forEach(e=>addExperience(e)); }
+  if (data.education?.length) { document.getElementById('edu-list').innerHTML=''; eduCount=0; data.education.forEach(e=>addEducation(e)); }
+  if (data.skills?.length) { cvState.skills=data.skills; renderSkills(); }
+  if (data.certifications?.length) { document.getElementById('cert-list').innerHTML=''; certCount=0; data.certifications.forEach(c=>addCert(c)); }
+  updatePreview();
+}
+
+// ── AI Process (FIXED) ─────────────────────────────────────────────
+async function processWithAI() {
+  const text = document.getElementById('ai-textarea').value.trim();
+  if (!text) { showToast(t('toast_empty_ai'), 'error'); return; }
+  const btn = document.getElementById('ai-send-btn');
+  const btnText = document.getElementById('ai-btn-text');
+  btn.disabled = true;
+  btnText.innerHTML = `<span class="spinner"></span> ${t('processing')}`;
+
+  // Build language instruction for AI
+  const langInstruction = currentCVLang === 'id'
+    ? 'IMPORTANT: Generate ALL CV content (descriptions, summary, achievements, professional text) in BAHASA INDONESIA. Only keep proper nouns, company names, and technical terms in their original language.'
+    : 'IMPORTANT: Generate ALL CV content (descriptions, summary, achievements, professional text) in ENGLISH.';
+
+  try {
+    collectFormData();
+    const resp = await fetch(`${API_BASE}/cv/process`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        user_input: `${langInstruction}\n\n${text}`,
+        existing_cv: cvState,
+        conversation_history: conversationHistory
+      })
+    });
+    if (!resp.ok) {
+      const errData = await resp.json().catch(()=>({}));
+      throw new Error(errData.detail || `HTTP ${resp.status}`);
+    }
+    const result = await resp.json();
+    if (!result.success) throw new Error(result.detail || 'Error');
+
+    conversationHistory.push({role:'user', content: text});
+    conversationHistory.push({role:'assistant', content: JSON.stringify(result.data)});
+    if (conversationHistory.length > 12) conversationHistory = conversationHistory.slice(-12);
+
+    const d = result.data;
+    if (d.cv_data) fillFormFromData(d.cv_data);
+    if (d.suggestions?.length) showSuggestions(d.suggestions);
+    if (d.message) showToast(d.message.substring(0,100)+(d.message.length>100?'...':''), 'success');
+    else showToast(t('toast_ai_success'), 'success');
+    document.getElementById('ai-textarea').value = '';
+  } catch(e) {
+    console.error('AI Error:', e);
+    showToast(t('toast_ai_error'), 'error');
+  } finally {
+    btn.disabled = false;
+    btnText.innerHTML = t('ai_btn');
+    lucide.createIcons();
+  }
+}
+
+async function expandDescription(expId) {
+  const btn = document.getElementById('ai-exp-btn-'+expId);
+  if (!btn) return;
+  const pos = document.getElementById('ep-'+expId)?.value;
+  const co = document.getElementById('ec-'+expId)?.value;
+  const bullets = Array.from(document.querySelectorAll(`#bullets-${expId} .bullet-input`)).map(t=>t.value).join('; ');
+  if (!pos && !bullets) { showToast(t('toast_expand_error'),'error'); return; }
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spinner"></span> ${t('writing')}`;
+
+  const langInstruction = currentCVLang === 'id'
+    ? 'Generate the bullet points in BAHASA INDONESIA.'
+    : 'Generate the bullet points in ENGLISH.';
+
+  try {
+    const resp = await fetch(`${API_BASE}/cv/expand-description`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({position:pos, company:co, description:`${langInstruction}\n${bullets}`})
+    });
+    if (!resp.ok) throw new Error();
+    const result = await resp.json();
+    if (!result.success) throw new Error();
+    const container = document.getElementById('bullets-'+expId);
+    container.innerHTML = '';
+    result.bullets.forEach(b => addBullet(expId, b));
+    updatePreview();
+    showToast(t('toast_expand_ok'),'success');
+  } catch(e) {
+    showToast(t('toast_expand_fail'),'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `<i data-lucide="sparkles" style="width:12px;height:12px;"></i> ${t('ai_expand')}`;
+    lucide.createIcons();
+  }
+}
+
+async function generateSummary() {
+  const btn = document.getElementById('gen-summary-btn');
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spinner"></span> ${t('generating')}`;
+  try {
+    collectFormData();
+    const langNote = currentCVLang === 'id' ? ' Generate in Bahasa Indonesia.' : ' Generate in English.';
+    const resp = await fetch(`${API_BASE}/cv/generate-summary`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({...cvState, _lang_note: langNote})
+    });
+    if (!resp.ok) throw new Error();
+    const result = await resp.json();
+    if (result.success) {
+      document.getElementById('f-summary').value = result.summary;
+      updatePreview();
+      showToast(t('toast_summary_ok'),'success');
+    }
+  } catch(e) {
+    showToast(t('toast_summary_fail'),'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `<i data-lucide="sparkles" style="width:12px;height:12px;"></i> ${t('gen_summary')}`;
+    lucide.createIcons();
+  }
+}
+
+async function analyzeJD() {
+  const jd = document.getElementById('jd-textarea').value.trim();
+  if (!jd) { showToast(t('toast_jd_empty'),'error'); return; }
+  const btn = document.getElementById('analyze-btn');
+  const btnText = document.getElementById('analyze-btn-text');
+  btn.disabled = true;
+  btnText.innerHTML = `<span class="spinner"></span> ${t('analyzing')}`;
+  try {
+    collectFormData();
+    const resp = await fetch(`${API_BASE}/ats/analyze`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({cv_data:cvState, job_description:jd})
+    });
+    if (!resp.ok) throw new Error();
+    const result = await resp.json();
+    if (!result.success) throw new Error();
+    const a = result.analysis;
+    const score = a.overall_score||0;
+    document.getElementById('ats-big').textContent = score+'%';
+    document.getElementById('ats-fill').style.width = score+'%';
+    document.getElementById('ats-fill').style.background = score>=80?'#2D7D4F':score>=60?'var(--gold)':'var(--danger)';
+    document.getElementById('ats-verdict').innerHTML = `Status: <strong>${a.verdict||''}</strong>`;
+    const bd = a.breakdown||{};
+    document.getElementById('ats-breakdown').style.display = 'flex';
+    [['kw',bd.keywords_match],['ex',bd.experience_relevance],['ed',bd.education_match],['sk',bd.skills_match]].forEach(([k,v])=>{
+      document.getElementById('ab-'+k).style.width=(v||0)+'%';
+      document.getElementById('av-'+k).textContent=(v||0)+'%';
+    });
+    document.getElementById('kw-results').style.display='block';
+    document.getElementById('kw-found').innerHTML=(a.matched_keywords||[]).map(k=>`<div class="kw-tag found">✓ ${k}</div>`).join('');
+    document.getElementById('kw-missing').innerHTML=(a.missing_keywords||[]).map(k=>`<div class="kw-tag missing">✗ ${k}</div>`).join('');
+    const recoList = document.getElementById('reco-list');
+    recoList.innerHTML=(a.recommendations||[]).map(r=>`
+      <div class="suggestion-item">
+        <div class="suggestion-icon"><i data-lucide="arrow-right" style="width:12px;height:12px;"></i></div>
+        <div>${r}</div>
+      </div>`).join('');
+    if (a.suggestions) showSuggestions(a.suggestions);
+    showToast(`${t('ats_score')}: ${score}%`, score>=70?'success':'');
+    lucide.createIcons();
+  } catch(e) {
+    showToast(t('toast_jd_fail'),'error');
+  } finally {
+    btn.disabled = false;
+    btnText.innerHTML = t('jd_analyze');
+  }
+}
+
+// ── CV Preview (A4 constrained, max 2 pages) ───────────────────────
+function updatePreview() {
+  const d = collectFormData();
+  const theme = document.getElementById('cv-theme').value;
+  const paper = document.getElementById('cv-paper');
+  if (theme === 'bw') paper.classList.add('theme-bw'); else paper.classList.remove('theme-bw');
+
+  const hasContent = d.name||d.professional_summary||d.work_experience.length||d.education.length;
+  if (!hasContent) {
+    paper.innerHTML = `
+      <div class="cv-empty-state">
+        <div class="cv-empty-icon">◈</div>
+        <div class="cv-empty-text">${t('preview_empty').replace('\n\n','<br><br>')}</div>
+      </div>`;
+    return;
+  }
+  
+  const contacts = [];
+  if(d.email) contacts.push(`✉️ ${d.email}`);
+  if(d.phone) contacts.push(`📱 ${d.phone}`);
+  if(d.city) contacts.push(`📍 ${d.city}`);
+  if(d.linkedin) contacts.push(`🔗 ${d.linkedin}`);
+  if(d.portfolio) contacts.push(`🌐 ${d.portfolio}`);
+
+  const lulus = t('lulus');
+  const ipk = t('ipk');
+
+  let expHTML = '';
+  // Limit to 3 experiences for 2-page constraint
+  const maxExp = 3;
+  d.work_experience.slice(0, maxExp).forEach(e => {
+    if (!e.position && !e.company) return;
+    const maxBullets = 4;
+    expHTML += `
+      <div class="cv-job-hd">
+        <div class="cv-job-title-text">${esc(e.position||'')}</div>
+        <div class="cv-job-period">${esc(e.period||'')}</div>
+      </div>
+      <div class="cv-job-co">${esc(e.company||'')}</div>
+      ${e.achievements?.length ? `<ul class="cv-bullets">${e.achievements.slice(0,maxBullets).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>` : ''}`;
+  });
+
+  let eduHTML = '';
+  d.education.forEach(e => {
+    if (!e.institution) return;
+    const deg = [e.degree,e.major].filter(Boolean).join(' ');
+    const det = [e.institution, e.year?`${lulus} ${e.year}`:'', e.gpa?`${ipk} ${e.gpa}`:''].filter(Boolean).join(' · ');
+    eduHTML += `<div class="cv-job-title-text">${esc(deg)}</div><div class="cv-job-co">${esc(det)}</div>`;
+  });
+
+  let certHTML = '';
+  d.certifications.forEach(c => {
+    if (!c.name) return;
+    certHTML += `<li>${esc(c.name)}${c.issuer?' — '+esc(c.issuer):''}${c.year?' ('+esc(c.year)+')':''}</li>`;
+  });
+
+  paper.innerHTML = `
+    <div class="cv-paper-name">${esc(d.name)||'Your Name'}</div>
+    <div class="cv-paper-pos">${esc(d.target_position||'')}</div>
+    <div class="cv-paper-contacts">${contacts.map(c=>`<span>${esc(c)}</span>`).join('<span style="opacity:.3;margin:0 2px;">|</span>')}</div>
+    ${d.professional_summary?`<div class="cv-section"><div class="cv-section-hd">Professional Summary</div><div style="font-size:9.5px;color:var(--text-mid);line-height:1.6;">${esc(d.professional_summary)}</div></div>`:''}
+    ${expHTML?`<div class="cv-section"><div class="cv-section-hd">Work Experience</div>${expHTML}</div>`:''}
+    ${eduHTML?`<div class="cv-section"><div class="cv-section-hd">Education</div>${eduHTML}</div>`:''}
+    ${d.skills?.length?`<div class="cv-section"><div class="cv-section-hd">Skills</div><div class="cv-skills-wrap">${d.skills.map(s=>`<div class="cv-skill-pill">${esc(s)}</div>`).join('')}</div></div>`:''}
+    ${certHTML?`<div class="cv-section"><div class="cv-section-hd">Certifications</div><ul class="cv-bullets">${certHTML}</ul></div>`:''}
+  `;
+}
+
+function showSuggestions(list) {
+  if (!list?.length) return;
+  const panel = document.getElementById('suggestions-panel');
+  const container = document.getElementById('suggestions-list');
+  panel.style.display = 'block';
+  container.innerHTML = list.slice(0,4).map(s=>`
+    <div class="suggestion-item">
+      <div class="suggestion-icon"><i data-lucide="chevron-right" style="width:12px;height:12px;"></i></div>
+      <div>${s}</div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+// ── Export Modal ───────────────────────────────────────────────────
+function openExportModal() {
+  document.getElementById('export-modal').classList.add('open');
+}
+function closeExportModal() {
+  document.getElementById('export-modal').classList.remove('open');
+}
+
+// ── Export CV ─────────────────────────────────────────────────────
+async function exportCV(format) {
+  const d = collectFormData();
+  if (!d.name && !d.professional_summary) { showToast(t('toast_cv_empty'),'error'); return; }
+  closeExportModal();
+
+  const lulus = t('lulus'); const ipk = t('ipk');
+
+  if (format === 'word') {
+    // Generate .doc using Blob (RTF-based, compatible)
+    exportAsWord(d, lulus, ipk);
+  } else {
+    exportAsPDF(d, lulus, ipk);
+  }
+}
+
+function buildPlainText(d, lulus, ipk) {
+  let txt = '';
+  txt += d.name.toUpperCase() + '\n';
+  if (d.target_position) txt += d.target_position + '\n';
+  const contacts = [d.email,d.phone,d.city,d.linkedin,d.portfolio].filter(Boolean);
+  if (contacts.length) txt += contacts.join(' | ') + '\n';
+  txt += '\n';
+  if (d.professional_summary) {
+    txt += 'PROFESSIONAL SUMMARY\n' + '─'.repeat(40) + '\n' + d.professional_summary + '\n\n';
+  }
+  if (d.work_experience.length) {
+    txt += 'WORK EXPERIENCE\n' + '─'.repeat(40) + '\n';
+    d.work_experience.forEach(e => {
+      txt += `${e.position} — ${e.company}\n${e.period}\n`;
+      e.achievements.forEach(a => txt += `• ${a}\n`);
+      txt += '\n';
+    });
+  }
+  if (d.education.length) {
+    txt += 'EDUCATION\n' + '─'.repeat(40) + '\n';
+    d.education.forEach(e => {
+      txt += `${e.degree} ${e.major}`.trim() + '\n';
+      let det = e.institution;
+      if (e.year) det += ` | ${lulus} ${e.year}`;
+      if (e.gpa) det += ` | ${ipk} ${e.gpa}`;
+      txt += det + '\n\n';
+    });
+  }
+  if (d.skills.length) txt += 'SKILLS\n' + '─'.repeat(40) + '\n' + d.skills.join(', ') + '\n\n';
+  if (d.certifications.length) {
+    txt += 'CERTIFICATIONS\n' + '─'.repeat(40) + '\n';
+    d.certifications.forEach(c => txt += `• ${c.name}${c.issuer?' — '+c.issuer:''}${c.year?' ('+c.year+')':''}\n`);
+  }
+  return txt;
+}
+
+function exportAsWord(d, lulus, ipk) {
+  // Build RTF document (Word-compatible)
+  const contacts = [d.email,d.phone,d.city,d.linkedin,d.portfolio].filter(Boolean).join(' | ');
+  let rtf = '{\\rtf1\\ansi\\deff0\n';
+  rtf += '{\\fonttbl{\\f0\\froman\\fcharset0 Georgia;}{\\f1\\fswiss\\fcharset0 Calibri;}}\n';
+  rtf += '{\\colortbl;\\red11\\green20\\blue38;\\red139\\green112\\blue64;\\red74\\green85\\blue104;}\n';
+  // Page size A4
+  rtf += '\\paperw11906\\paperh16838\\margl1440\\margr1440\\margt1080\\margb1080\n';
+
+  const rt = s => (s||'').replace(/[\\{}]/g,'\\$&').replace(/[^\x00-\x7F]/g, c=>`\\'${c.charCodeAt(0).toString(16)}`);
+
+  rtf += `{\\f0\\fs36\\b\\cf1 ${rt(d.name.toUpperCase())}\\par}\n`;
+  if (d.target_position) rtf += `{\\f1\\fs20\\cf2 ${rt(d.target_position)}\\par}\n`;
+  if (contacts) rtf += `{\\f1\\fs16\\cf3 ${rt(contacts)}\\par}\n`;
+  rtf += '\\par\\pard\\brdrb\\brdrs\\brdrw10\\brsp20\\par\\pard\n';
+
+  const section = (title, content) => {
+    rtf += `{\\f1\\fs18\\b\\cf2 ${rt(title)}\\par}\n`;
+    rtf += '\\pard\\brdrb\\brdrs\\brdrw5\\brsp10\\par\\pard\n';
+    rtf += content;
+    rtf += '\\par\n';
+  };
+
+  if (d.professional_summary) {
+    section('PROFESSIONAL SUMMARY', `{\\f1\\fs18\\cf3 ${rt(d.professional_summary)}\\par}\n`);
+  }
+  if (d.work_experience.length) {
+    let wc = '';
+    d.work_experience.forEach(e => {
+      wc += `{\\f1\\fs20\\b\\cf1 ${rt(e.position)} \\emdash  ${rt(e.company)}}{\\f1\\fs16\\cf3  | ${rt(e.period)}\\par}\n`;
+      e.achievements.forEach(a => wc += `{\\f1\\fs18 \\bullet  ${rt(a)}\\par}\n`);
+      wc += '\\par\n';
+    });
+    section('WORK EXPERIENCE', wc);
+  }
+  if (d.education.length) {
+    let ec = '';
+    d.education.forEach(e => {
+      ec += `{\\f1\\fs20\\b\\cf1 ${rt([e.degree,e.major].filter(Boolean).join(' '))}\\par}\n`;
+      let det = rt(e.institution);
+      if (e.year) det += ` | ${lulus} ${e.year}`;
+      if (e.gpa) det += ` | ${ipk} ${e.gpa}`;
+      ec += `{\\f1\\fs18\\cf3 ${det}\\par}\\par\n`;
+    });
+    section('EDUCATION', ec);
+  }
+  if (d.skills.length) {
+    section('SKILLS', `{\\f1\\fs18\\cf3 ${rt(d.skills.join(', '))}\\par}\n`);
+  }
+  if (d.certifications.length) {
+    let cc = '';
+    d.certifications.forEach(c => {
+      cc += `{\\f1\\fs18 \\bullet  ${rt(c.name)}${c.issuer?' \\emdash '+rt(c.issuer):''}${c.year?' ('+c.year+')':''}\\par}\n`;
+    });
+    section('CERTIFICATIONS', cc);
+  }
+  rtf += '}';
+
+  const blob = new Blob([rtf], {type:'application/rtf'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `CV_${(d.name||'NazuCV').replace(/\s+/g,'_')}.doc`;
+  a.click();
+  showToast(t('toast_export_ok'),'success');
+}
+
+function exportAsPDF(d, lulus, ipk) {
+  const isBW = document.getElementById('cv-theme').value === 'bw';
+  const paperContent = document.getElementById('cv-paper').innerHTML;
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: A4; margin: 0; }
+    body { font-family: 'Outfit', sans-serif; margin: 0; padding: 0; background: #fff; display: flex; justify-content: center; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cv-paper { width: 210mm; min-height: 297mm; padding: 15mm 20mm; box-sizing: border-box; font-size: 11pt; line-height: 1.6; color: #0F1923; }
+    .cv-paper-name { font-family: 'Cormorant Garamond', serif; font-size: 26pt; font-weight: 700; color: #0B1426; margin-bottom: 2pt; }
+    .cv-paper-pos { font-size: 12pt; font-weight: 500; color: #8B7040; letter-spacing: 0.5px; margin-bottom: 8pt; }
+    .cv-paper-contacts { display: flex; flex-wrap: wrap; gap: 8pt; font-size: 9pt; color: #8A96A8; margin-bottom: 12pt; padding-bottom: 10pt; border-bottom: 1.5pt solid #C8A96E; }
+    .cv-section { margin-bottom: 12pt; }
+    .cv-section-hd { font-size: 9pt; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8B7040; margin-bottom: 6pt; padding-bottom: 4pt; border-bottom: 1pt solid #E8E1D0; }
+    .cv-job-hd { display: flex; justify-content: space-between; align-items: baseline; }
+    .cv-job-title-text { font-size: 11pt; font-weight: 600; color: #0B1426; }
+    .cv-job-period { font-size: 9pt; color: #8A96A8; white-space: nowrap; }
+    .cv-job-co { font-size: 10pt; color: #8B7040; margin-bottom: 4pt; }
+    .cv-bullets { padding-left: 14pt; margin-bottom: 8pt; margin-top: 0; }
+    .cv-bullets li { margin: 3pt 0; font-size: 10pt; color: #4A5568; }
+    .cv-skills-wrap { display: flex; flex-wrap: wrap; gap: 4pt; }
+    .cv-skill-pill { font-size: 9.5pt; background: #F3EFE5; color: #4A5568; border: 1pt solid #E8E1D0; border-radius: 4pt; padding: 2pt 8pt; }
+    .cv-empty-state, .cv-page-2-divider { display: none; }
+    ${isBW ? `
+    .cv-paper-name, .cv-section-hd, .cv-job-title-text { color: #000; }
+    .cv-paper-pos, .cv-job-co { color: #444; }
+    .cv-paper-contacts { border-bottom-color: #000; color: #333; }
+    .cv-section-hd { border-bottom-color: #000; }
+    .cv-bullets li { color: #222; }
+    .cv-skill-pill { border-color: #bbb; background: #fff; color: #000; }
+    .cv-paper { color: #000; }
+    ` : ''}
+  </style>
+  </head><body>
+  <div class="cv-paper">${paperContent}</div>
+  <script>window.onload = function() { setTimeout(function(){ window.print(); }, 300); }<\/script>
+  </body></html>`;
+
+  const w = window.open('','_blank','width=794,height=1123');
+  w.document.write(html);
+  w.document.close();
+  showToast(t('toast_export_ok'),'success');
+}
+
+// ── Copy Plain Text ────────────────────────────────────────────────
+function copyPlainText() {
+  const d = collectFormData();
+  const txt = buildPlainText(d, t('lulus'), t('ipk'));
+  navigator.clipboard.writeText(txt).then(()=>showToast(t('toast_copy_ok'),'success'));
+}
+
+// ── Toast ──────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.className='toast', 3500);
+}
+
+// ── Escape HTML ────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Init ───────────────────────────────────────────────────────────
+addExperience();
+addEducation();
+setLang('en');
+lucide.createIcons();
+updatePreview();
 </script>
 </body>
 </html>
