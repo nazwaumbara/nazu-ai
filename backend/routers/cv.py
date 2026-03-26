@@ -103,7 +103,7 @@ async def process_cv(request: CVRequest):
     try:
         # Inisialisasi model dengan System Prompt
         model = genai.GenerativeModel(
-            model_name="gemini-2.0-flash-latest",
+            model_name="gemini-2.5-flash-latest",
             system_instruction=NAZU_SYSTEM_PROMPT
         )
         
@@ -148,7 +148,7 @@ async def process_cv(request: CVRequest):
 async def expand_description(data: dict):
     """Expand a short job description into professional ATS-optimized bullets"""
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-2.5-flash")
         prompt = f"""Kembangkan deskripsi pekerjaan singkat ini menjadi 3-5 bullet point profesional yang:
 - Menggunakan Action Verbs kuat
 - Berorientasi hasil terukur (dengan estimasi metrik yang masuk akal)
@@ -183,7 +183,7 @@ Kembalikan HANYA JSON array of strings: ["bullet 1", "bullet 2", "bullet 3"]"""
 async def generate_summary(data: dict):
     """Generate professional summary from CV data"""
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-2.5-flash")
         prompt = f"""Buat Professional Summary yang kuat (2-3 kalimat) berdasarkan data berikut.
 Summary harus: menyebutkan posisi target, tahun pengalaman, keahlian utama, dan nilai yang ditawarkan.
 
