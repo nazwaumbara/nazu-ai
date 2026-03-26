@@ -4,8 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import uvicorn
 import os
-from routers import cv, ats, auth
-# from routers import cv, ats, auth
+from backend.routers import cv, ats, auth
 app = FastAPI(
     title="Nazu AI Career Specialist API",
     description="Professional ATS-optimized CV builder powered by Claude AI",
