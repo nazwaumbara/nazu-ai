@@ -1,13 +1,14 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-import uvicorn
+from fastapi.responses import FileResponse, JSONResponse
 import os
+
+# Import router menggunakan path absolute
 from backend.routers import cv, ats, auth
+
 app = FastAPI(
     title="Nazu AI Career Specialist API",
-    description="Professional ATS-optimized CV builder powered by Claude AI",
+    description="Professional ATS-optimized CV builder powered by Gemini AI",
     version="1.0.0"
 )
 
@@ -23,15 +24,18 @@ app.include_router(cv.router, prefix="/api/cv", tags=["CV Builder"])
 app.include_router(ats.router, prefix="/api/ats", tags=["ATS Analysis"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 
-app.mount("/static", StaticFiles(directory="../frontend/assets"), name="static")
+# PERINTAH APP.MOUNT STATIC FILES YANG BIKIN ERROR SUDAH DIHAPUS
 
 @app.get("/")
 async def root():
-    return FileResponse("../frontend/pages/index.html")
+    # Menggunakan jalur absolut agar Python tidak tersesat mencari HTML di server Vercel
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    html_path = os.path.join(base_dir, "frontend", "pages", "index.html")
+    
+    if os.path.exists(html_path):
+        return FileResponse(html_path)
+    return {"message": "API Nazu AI Berjalan Sempurna!"}
 
 @app.get("/health")
 async def health():
     return {"status": "ok", "service": "Nazu AI Career Specialist"}
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
