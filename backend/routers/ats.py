@@ -1,12 +1,13 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-import anthropic
+import google.generativeai as genai
 import os
 import json
-import re
 
 router = APIRouter()
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+
+# Konfigurasi Gemini API
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
 class ATSRequest(BaseModel):
     cv_data: dict
@@ -19,6 +20,7 @@ class KeywordsRequest(BaseModel):
 async def analyze_ats(request: ATSRequest):
     """Full ATS analysis: score, keywords, recommendations"""
     try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
         prompt = f"""Kamu adalah ATS (Applicant Tracking System) expert. Analisis kecocokan CV ini dengan Job Description.
 
 CV DATA:
@@ -49,13 +51,12 @@ Kembalikan HANYA JSON berikut (tidak ada teks lain):
   "verdict_detail": "Penjelasan singkat verdict"
 }}"""
 
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}]
+        response = model.generate_content(
+            prompt,
+            generation_config={"response_mime_type": "application/json"}
         )
 
-        raw = response.content[0].text.strip()
+        raw = response.text.strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -72,6 +73,7 @@ Kembalikan HANYA JSON berikut (tidak ada teks lain):
 async def extract_keywords(request: KeywordsRequest):
     """Extract important keywords from job description"""
     try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
         prompt = f"""Ekstrak keyword penting dari Job Description ini untuk keperluan ATS optimization.
 
 JD: {request.job_description}
@@ -85,13 +87,12 @@ Kembalikan HANYA JSON:
   "industry_terms": ["Agile", "Scrum", "..."]
 }}"""
 
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=1000,
-            messages=[{"role": "user", "content": prompt}]
+        response = model.generate_content(
+            prompt,
+            generation_config={"response_mime_type": "application/json"}
         )
 
-        raw = response.content[0].text.strip()
+        raw = response.text.strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):

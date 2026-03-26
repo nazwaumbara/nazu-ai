@@ -1,12 +1,14 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
-import anthropic
+import google.generativeai as genai
 import os
 import json
 
 router = APIRouter()
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+
+# Konfigurasi Gemini API
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
 NAZU_SYSTEM_PROMPT = """Anda adalah "Nazu AI Career Specialist", pakar rekrutmen profesional dan spesialis ATS (Applicant Tracking System).
 
@@ -99,27 +101,34 @@ class GeneratePDFRequest(BaseModel):
 @router.post("/process")
 async def process_cv(request: CVRequest):
     try:
-        messages = request.conversation_history[-6:] if request.conversation_history else []
+        # Inisialisasi model dengan System Prompt
+        model = genai.GenerativeModel(
+            model_name="gemini-1.5-flash",
+            system_instruction=NAZU_SYSTEM_PROMPT
+        )
         
         context = ""
         if request.existing_cv:
             context = f"\n\nData CV yang sudah ada (update jika ada informasi baru):\n{json.dumps(request.existing_cv, ensure_ascii=False)}"
         
-        messages.append({
-            "role": "user",
-            "content": request.user_input + context
-        })
+        # Susun riwayat percakapan menjadi string
+        history_text = ""
+        if request.conversation_history:
+            history_text = "\n\nRiwayat percakapan sebelumnya:\n"
+            for msg in request.conversation_history[-6:]:
+                history_text += f"{msg['role']}: {msg['content']}\n"
 
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4000,
-            system=NAZU_SYSTEM_PROMPT,
-            messages=messages
+        final_prompt = f"{history_text}\n\nInput User Saat Ini: {request.user_input}{context}"
+
+        # Eksekusi Gemini dengan paksaan format JSON
+        response = model.generate_content(
+            final_prompt,
+            generation_config={"response_mime_type": "application/json"}
         )
 
-        raw = response.content[0].text.strip()
+        raw = response.text.strip()
         
-        # Clean JSON if wrapped in markdown
+        # Bersihkan markdown json (jaga-jaga jika masih ada)
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -131,16 +140,15 @@ async def process_cv(request: CVRequest):
 
     except json.JSONDecodeError as e:
         raise HTTPException(status_code=422, detail=f"AI response parsing error: {str(e)}")
-    except anthropic.APIError as e:
-        raise HTTPException(status_code=502, detail=f"AI service error: {str(e)}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Gemini service error: {str(e)}")
 
 
 @router.post("/expand-description")
 async def expand_description(data: dict):
     """Expand a short job description into professional ATS-optimized bullets"""
     try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
         prompt = f"""Kembangkan deskripsi pekerjaan singkat ini menjadi 3-5 bullet point profesional yang:
 - Menggunakan Action Verbs kuat
 - Berorientasi hasil terukur (dengan estimasi metrik yang masuk akal)
@@ -153,19 +161,19 @@ Deskripsi singkat: {data.get('description', '')}
 
 Kembalikan HANYA JSON array of strings: ["bullet 1", "bullet 2", "bullet 3"]"""
 
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=800,
-            messages=[{"role": "user", "content": prompt}]
+        response = model.generate_content(
+            prompt,
+            generation_config={"response_mime_type": "application/json"}
         )
         
-        raw = response.content[0].text.strip()
+        raw = response.text.strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
                 raw = raw[4:]
+        raw = raw.strip()
         
-        bullets = json.loads(raw.strip())
+        bullets = json.loads(raw)
         return {"success": True, "bullets": bullets}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -175,6 +183,7 @@ Kembalikan HANYA JSON array of strings: ["bullet 1", "bullet 2", "bullet 3"]"""
 async def generate_summary(data: dict):
     """Generate professional summary from CV data"""
     try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
         prompt = f"""Buat Professional Summary yang kuat (2-3 kalimat) berdasarkan data berikut.
 Summary harus: menyebutkan posisi target, tahun pengalaman, keahlian utama, dan nilai yang ditawarkan.
 
@@ -182,12 +191,8 @@ Data: {json.dumps(data, ensure_ascii=False)}
 
 Kembalikan HANYA string summary, bukan JSON."""
 
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=300,
-            messages=[{"role": "user", "content": prompt}]
-        )
+        response = model.generate_content(prompt)
         
-        return {"success": True, "summary": response.content[0].text.strip()}
+        return {"success": True, "summary": response.text.strip()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
