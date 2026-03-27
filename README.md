@@ -120,6 +120,8 @@ Download CV sebagai plain text (100% ATS-selectable) atau salin ke clipboard
 
 ---
 
+link: https://nazu-ai.vercel.app/
+
 ## Pengembangan Lanjutan
 
 - [ ] Database (PostgreSQL) untuk simpan CV user
