@@ -19,7 +19,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# gfxxtfxcfc
 app.include_router(cv.router, prefix="/api/cv", tags=["CV Builder"])
 app.include_router(ats.router, prefix="/api/ats", tags=["ATS Analysis"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
